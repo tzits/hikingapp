@@ -1,0 +1,2 @@
+class UserListCategoryItemsController < ApplicationController
+end
