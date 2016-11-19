@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118223448) do
+ActiveRecord::Schema.define(version: 20161119001719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,37 @@ ActiveRecord::Schema.define(version: 20161118223448) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_list_category_items", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "category_id"
+    t.integer  "list_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_user_list_category_items_on_category_id", using: :btree
+    t.index ["item_id"], name: "index_user_list_category_items_on_item_id", using: :btree
+    t.index ["list_id"], name: "index_user_list_category_items_on_list_id", using: :btree
+    t.index ["user_id"], name: "index_user_list_category_items_on_user_id", using: :btree
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "trail_name"
+    t.string   "experience"
+    t.string   "gender"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "bio"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   add_foreign_key "items", "categories"
   add_foreign_key "list_contents", "categories"
   add_foreign_key "list_contents", "lists"
+  add_foreign_key "user_list_category_items", "categories"
+  add_foreign_key "user_list_category_items", "items"
+  add_foreign_key "user_list_category_items", "lists"
+  add_foreign_key "user_list_category_items", "users"
 end
