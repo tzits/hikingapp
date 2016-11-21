@@ -1,0 +1,10 @@
+THIS IS THE SHOW PAGE <br>
+<%= @user.first_name %>
+<% @sql_hike.each do |l| %>
+  <% if l.category_id == 1 %>
+    <div><%= Item.find(l.item_id).name %></div>
+  <% end %>
+  <% if l.category_id == 2 %>
+    <div><%= Item.find(l.item_id).name %></div>
+  <% end %>
+<% end %>
