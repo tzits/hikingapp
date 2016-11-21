@@ -1,0 +1,8 @@
+<% @categories.each do |c| %>
+ <div>
+  <b> <%= c.name %></b>
+   <% c.items.each do |i| %>
+   <p><%= i.name %></p>
+   <% end %>
+ </div>
+<% end %>
