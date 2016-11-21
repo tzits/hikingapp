@@ -2,15 +2,15 @@
  <div>
   <b> <%= c.name %></b>
    <% c.items.each do |i| %>
-   <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
    <p><%= i.image %>
-     <%= link_to 'See More', item_path(i) %>
-   <p><%= i.name %></p>
-   <%= f.hidden_field :user_id, :value => session[:user_id] %>
+     <p><%= i.name %></p>
+   <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
+   <%= f.hidden_field :user_id, :value => 1 %>
    <%= f.hidden_field :category_id, :value => c.id %>
    <%= f.hidden_field :list_id, :value => params[:id] %>
    <%= f.hidden_field :item_id, :value => i.id %>
    <%= f.submit 'Add' %>
+   <%= link_to 'See More', item_path(i) %>
    <% end %>
    <% end %>
  </div>
