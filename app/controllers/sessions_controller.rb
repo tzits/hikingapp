@@ -9,10 +9,10 @@ def create
   if @user
     login(@user)
     flash[:success] = "You are now logged in."
-    redirect_to @user
+    redirect_to user_path(@user)
   else
     flash[:error] = "Incorrect login or password"
-    redirect_to root_path
+    redirect_to register_path
   end
 
 end

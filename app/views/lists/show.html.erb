@@ -1,9 +1,8 @@
 <% @categories.each do |c| %>
  <div>
-  <b> <%= c.name %></b>
+  <div class="small-12 large-12 columns"><h3> <%= c.name %></h3></div>
    <% c.items.each do |i| %>
-   <p><%= i.image %>
-     <p><%= i.name %></p>
+   <div class="small-4 large-4 columns"><%= i.image %>
    <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
    <%= f.hidden_field :user_id, :value => 1 %>
    <%= f.hidden_field :category_id, :value => c.id %>
@@ -11,6 +10,7 @@
    <%= f.hidden_field :item_id, :value => i.id %>
    <%= f.submit 'Add' %>
    <%= link_to 'See More', item_path(i) %>
+   <p><%= i.name %></p></div>
    <% end %>
    <% end %>
  </div>

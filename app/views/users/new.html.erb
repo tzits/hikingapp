@@ -2,8 +2,8 @@
 <div>  <%= f.text_field :first_name, class: "form-control margin-top-5", placeholder: "First Name" %></div>
 <div>  <%= f.text_field :last_name, class: "form-control margin-top-5", placeholder: "Last Name" %></div>
 <div>  <%= f.text_field :trail_name, class: "form-control margin-top-5", placeholder: "Trail Name" %></div>
-<div>  <%= f.select :experience, [['Thru Hiker'],['Lasher'],['Section Hiker'],['Weekend Warrior'],['Day Hiker']] %> </div>
-<div>  <%= f.select :gender, [['Male'],['Female'],['Other']], class: "form-control inline-block center_vertical" %></div>
+<div>  <%= f.select :experience, [['Thru Hiker'],['Lasher'],['Section Hiker'],['Weekend Warrior'],['Day Hiker']], class: "form-control inline-block center_vertical" %> </div>
+<div>  <%= f.select :gender, [['Female'],['Male'],['Other']], class: "form-control inline-block center_vertical" %></div>
 <div>  <%= f.email_field :email, class: "form-control", placeholder: "Email" %></div>
 <div>  <%= f.password_field :password, class: "form-control", placeholder: "Password" %></div>
 <div>  <%= f.password_field :password, class: "form-control", placeholder: "Confirm Password" %></div>

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
 			@user.save
+      redirect_to user_path(@user)
     else
       redirect_to root_path
     end
@@ -23,9 +24,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       redirect_to :back
+      flash[:error] = @user.errors.full_messages.join(". ")
     end
   end
 
@@ -37,7 +39,7 @@ class UsersController < ApplicationController
   private
 
 def user_params
-  params.require(:user).permit(:first_name, :last_name, :trail_name, :gender, :username, :experience, :password, :bio, :avatar)
+  params.require(:user).permit(:first_name, :last_name, :trail_name, :gender, :email, :experience, :password_digest, :bio, :avatar)
 end
 
 end
