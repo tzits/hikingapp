@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
+  get '/lists/:id/categories/:category_id', to: 'categories#show', as: 'category'
 end
