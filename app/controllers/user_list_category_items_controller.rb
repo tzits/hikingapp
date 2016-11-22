@@ -2,9 +2,10 @@ class UserListCategoryItemsController < ApplicationController
 
   def create
     ulci = UserListCategoryItem.new(ulci_params)
+    @list = List.find(ulci.list.id)
     if ulci.valid?
       ulci.save
-      redirect_to user_path(User.find(1))
+      redirect_to category_path(@list, @list.next(ulci.category.id))
     else
       redirect_to :back
     end

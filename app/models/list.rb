@@ -3,8 +3,8 @@ class List < ApplicationRecord
   has_many :categories, through: :list_contents
 
 
-  def is_finished?
-    if (@list.next(x))
+  def is_finished(x)
+    if self.next(x)
       false
     else
       true

@@ -18,8 +18,12 @@
 <%= f.hidden_field :category_id, :value => @category.id %>
 <%= f.hidden_field :list_id, :value => params[:id] %>
 <%= f.hidden_field :item_id, :value => i.id %>
-<%= f.submit 'Add to Gear', class: "button" %>
+<%= f.submit 'Add to Gear', class: "button", id: "add" %>
+<% if @list.is_finished(params[:category_id]) %>
+<%= link_to 'Skip', users_path(current_user), class: "button" %>
+<% else %>
 <%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "button" %>
+<% end %>
 <button class="close-button" data-close aria-label="Close modal" type="button">
 <span aria-hidden="true">&times;</span>
 </button>
