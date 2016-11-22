@@ -10,13 +10,18 @@
  </div>
 
 <div class="reveal" id="exampleModal1" data-reveal>
-  <h1>Awesome. I Have It.</h1>
+  <%= i.image %>
+  <%= i.brand %> <%= i.name %>
+  <%= i.size %> <%= i.unit %>
+  <%= i.weight %>
   <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
   <%= f.hidden_field :user_id, :value => 1 %>
   <%= f.hidden_field :category_id, :value => c.id %>
   <%= f.hidden_field :list_id, :value => params[:id] %>
   <%= f.hidden_field :item_id, :value => i.id %>
-  <%= f.submit 'Add' %>
+  <%= f.submit 'Add to Gear', class: "button" %>
+  <%= link_to 'Skip', lists_path, class: "button" %>
+  <%= link_to 'Add your Own', lists_path, class: "button" %>
   <button class="close-button" data-close aria-label="Close modal" type="button">
   <span aria-hidden="true">&times;</span>
   </button>
