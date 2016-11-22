@@ -14,7 +14,7 @@
 <%= i.size %> <%= i.unit %>
 <%= i.weight %>
 <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
-<%= f.hidden_field :user_id, :value => 1 %>
+<%= f.hidden_field :user_id, :value => @current_user %>
 <%= f.hidden_field :category_id, :value => @category.id %>
 <%= f.hidden_field :list_id, :value => params[:id] %>
 <%= f.hidden_field :item_id, :value => i.id %>

@@ -5,7 +5,11 @@ class UserListCategoryItemsController < ApplicationController
     @list = List.find(ulci.list.id)
     if ulci.valid?
       ulci.save
-      redirect_to category_path(@list, @list.next(ulci.category.id))
+      if @list.is_finished(ulci.category.id)
+        redirect_to user_path(@current_user)
+      else
+        redirect_to category_path(@list, @list.next(ulci.category.id))
+      end
     else
       redirect_to :back
     end
