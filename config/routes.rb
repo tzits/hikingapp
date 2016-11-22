@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users
+  root to: 'sessions#new'
   get '/lists', to: 'lists#index'
   get '/lists/:id', to: 'lists#show', as: 'list'
   post '/user_list_category_items', to: 'user_list_category_items#create'

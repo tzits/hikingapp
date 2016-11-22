@@ -7,18 +7,19 @@ class SessionsController < ApplicationController
     @user = User.confirm(params[:email], params[:password])
 
     if @user
-      session[:user_id] = @user.id
+      login(@user)
       flash[:success] = "You are now logged in."
-      redirect_to user_path(@user)
+      redirect_to @user
     else
       flash[:error] = "Incorrect login or password"
-      render :new
+      redirect_to root_path
     end
 
   end
 
   def destroy
     logout
+    flash[:success] = "You are logged out. Bye!"
     redirect_to root_path
   end
 

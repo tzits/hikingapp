@@ -12,6 +12,14 @@
   </head>
 
   <body>
+    <% if flash[:success] %>
+    <div class="container small-container">
+      <div class="alert alert-danger">
+        <%= flash[:success] %>
+      </div>
+    </div>
+    <% end %>
+
     <% if flash[:error] %>
 <div class="container small-container">
   <div class="alert alert-danger">
