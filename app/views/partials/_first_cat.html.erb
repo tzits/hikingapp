@@ -1,0 +1,38 @@
+<h1><%= @list.name %></h1>
+<% list = @list.categories.first %>
+
+<a data-open="addModal">Add your Own</a>
+<div class="small-10 large-10 columns"><h3> <%= list.name %></h3></div>
+ <% list.items.each do |i| %>
+<div class="small-8 large-4 columns">
+   <%= i.image %>
+   <p><%= i.name %></p>
+   <a data-open="moreinfo">See More</a>
+ </div>
+</div>
+
+<div class="reveal" id="moreinfo" data-reveal>
+<%= i.image %>
+<%= i.brand %> <%= i.name %>
+<%= i.size %> <%= i.unit %>
+<%= i.weight %>
+<%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
+<%= f.hidden_field :user_id, :value => 1 %>
+<%= f.hidden_field :category_id, :value => list.id %>
+<%= f.hidden_field :list_id, :value => params[:id] %>
+<%= f.hidden_field :item_id, :value => i.id %>
+<%= f.submit 'Add to Gear', class: "button" %>
+<%= link_to 'Skip', lists_path, class: "button" %>
+<button class="close-button" data-close aria-label="Close modal" type="button">
+<span aria-hidden="true">&times;</span>
+</button>
+<% end %>
+</div>
+<% end %>
+
+<div class="reveal" id="addModal" data-reveal>
+  <%= link_to 'bananas', user_list_category_items_path, class: "button" %>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>

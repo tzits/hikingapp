@@ -1,0 +1,12 @@
+<%= form_for @user do |f| %>
+<div>
+<label for="avatar"> Profile Picture </label>
+<%= f.file_field :avatar, class: "update-pic" %>
+</div>
+<div>  <%= f.text_field :trail_name, class: "form-control margin-top-5", placeholder: @user.trail_name %> </div>
+<div>  <%= f.select :experience, [['Thru Hiker'],['Lasher'],['Section Hiker'],['Weekend Warrior'],['Day Hiker']], class: "form-control inline-block center_vertical" %> </div>
+<div>  <%= f.text_area :bio, cols: 10, rows: 20, placeholder: 'Tell us about you' %> </div>
+<div>  <%= f.hidden_field :password_digest, :value => @user.password_digest %>
+<div>  <%= f.submit "Update!", class: "btn btn-success btn-lg btn-block btn-signuplog" %> </div>
+
+<% end %>

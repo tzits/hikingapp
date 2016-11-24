@@ -1,10 +1,66 @@
-THIS IS THE SHOW PAGE <br>
-<%= @user.first_name %>
+<div class="panel callout radius">
+  <div class='row'>
+    <div class="small-12 large-4 columns"><%= image_tag @user.avatar.url(:medium), style: 'border-radius:10px'%>
+    </div>
+    <div class="small-12 large-4 columns" style='text-align:center'>
+      <% if @user.trail_name != "" %>
+      <h1><%= @user.trail_name %></h1>
+      <% else %>
+      <h1><%= @user.first_name.capitalize %></h1>
+      <% end %>
+      <h3><%= @user.experience %></h3>
+      <h3><%= mail_to @user.email, 'Contact' %>
+    </div>
+    <div class="small-12 large-4 columns">
+      <%= @user.bio %><br>
+      <% if (current_user.id == @user.id) %>
+      <%= link_to 'Edit', edit_user_path(@user) %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class='row' >
+  <div class="small-12 large-12 columns" style='margin-top:25px'>
+    <%= link_to 'Create New Gear List', lists_path, class:"button large" %>
+  </div>
+</div>
+<div class='row'>
+  <% if @sql_bike.count > 0 %>
+  <h2>Biking List</h2>
+</div>
+<% @sql_bike.each do |l| %>
+<div class='row large-offset-1'>
+  <div class="small-4 large-2 column panel callout radius">
+    <%= Item.find(l.item_id).image %>
+    <%= Item.find(l.item_id).name %>
+  </div>
+  <% end %>
+</div>
+  <% end %>
+</div>
+</div>
+<div class='row'>
+  <% if @sql_hike.count > 0 %>
+  <h2>Hiking List</h2>
+</div>
 <% @sql_hike.each do |l| %>
-  <% if l.category_id == 1 %>
-    <div><%= Item.find(l.item_id).name %></div>
+<div class='row large-offset-1'>
+  <div class="small-4 large-2 column panel callout radius">
+    <%= Item.find(l.item_id).image %>
+    <%= Item.find(l.item_id).name %>
+  </div>
   <% end %>
-  <% if l.category_id == 2 %>
-    <div><%= Item.find(l.item_id).name %></div>
   <% end %>
+</div>
+</div>
+<div class='row'>
+<% if @sql_canoe.count > 0 %>
+  <h2>Canoeing List</h2>
+  <% end %>
+</div>
+<% @sql_canoe.each do |l| %>
+<div class='row'>
+  <div class="small-2 large-2 column"><%= Item.find(l.item_id).name %></div>
 <% end %>
+</div>
+</div>
