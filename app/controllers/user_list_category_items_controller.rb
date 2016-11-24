@@ -6,7 +6,7 @@ class UserListCategoryItemsController < ApplicationController
     if ulci.valid?
       ulci.save
       if @list.is_finished(ulci.category.id)
-        redirect_to user_path(@current_user)
+        redirect_to user_path(current_user.id)
       else
         redirect_to category_path(@list, @list.next(ulci.category.id))
       end

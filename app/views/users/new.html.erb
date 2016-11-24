@@ -1,3 +1,4 @@
+<form>
 <%= form_for (@user = User.new) do |f| %>
 <div>  <%= f.text_field :first_name, class: "form-control margin-top-5", placeholder: "First Name" %></div>
 <div>  <%= f.text_field :last_name, class: "form-control margin-top-5", placeholder: "Last Name" %></div>
@@ -10,3 +11,4 @@
 <div>  <%= f.submit "Get Planning!", class: "btn btn-success btn-lg btn-block btn-signuplog" %></div>
 
 <% end %>
+</form>
