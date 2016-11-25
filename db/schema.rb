@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123011812) do
+ActiveRecord::Schema.define(version: 20161124192752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,23 @@ ActiveRecord::Schema.define(version: 20161123011812) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "checklist_items", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "checked"
+    t.integer  "checklist_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["checklist_id"], name: "index_checklist_items_on_checklist_id", using: :btree
+  end
+
+  create_table "checklists", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_checklists_on_user_id", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -91,6 +108,8 @@ ActiveRecord::Schema.define(version: 20161123011812) do
     t.datetime "avatar_updated_at"
   end
 
+  add_foreign_key "checklist_items", "checklists"
+  add_foreign_key "checklists", "users"
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "items", "categories"

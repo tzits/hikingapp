@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'bootstrap', '~> 4.0.0.alpha5'
 
 gem 'foundation-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

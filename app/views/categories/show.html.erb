@@ -1,32 +1,47 @@
-<%= link_to 'Add your Own', user_list_category_items_path, class: "button" %>
-<div class="small-12 large-12 columns"><h3> <%= @category.name %></h3></div>
+<%= link_to 'Add your Own', user_list_category_items_path, class: "btn btn-info" %>
+
+<div class="col-sm-12 col-lg-12"><h3> <%= @category.name %></h3></div>
  <% @category.items.each do |i| %>
-<div class="small-4 large-4 columns">
+<div class="col-sm-12 col-lg-4">
    <%= i.image %>
    <p><%= i.name %></p>
-   <a data-open="modal-<%= i.id %>">See More</a>
+   <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-<%=i.id%>">See More</button>
  </div>
 </div>
 
-<div class="reveal" id="modal-<%= i.id %>" data-reveal>
-<%= i.image %>
-<%= i.brand %> <%= i.name %>
-<%= i.size %> <%= i.unit %>
-<%= i.weight %>
-<%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
-<%= f.hidden_field :user_id, :value => current_user.id %>
-<%= f.hidden_field :category_id, :value => @category.id %>
-<%= f.hidden_field :list_id, :value => params[:id] %>
-<%= f.hidden_field :item_id, :value => i.id %>
-<%= f.submit 'Add to Gear', class: "button", id: "add" %>
-<% if @list.is_finished(params[:category_id]) %>
-<%= link_to 'Skip', users_path(current_user), class: "button" %>
-<% else %>
-<%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "button" %>
-<% end %>
-<button class="close-button" data-close aria-label="Close modal" type="button">
-<span aria-hidden="true">&times;</span>
-</button>
-<% end %>
+<div id="modal-<%=i.id%>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title"><%= i.brand %> <%= i.name %></h4>
+  </div>
+  <div class="modal-body">
+    <%= i.image %>
+    <%= i.brand %> <%= i.name %>
+    <%= i.size %> <%= i.unit %>
+    <%= i.weight %>
+    <% i.comments.each do |com| %>
+    <%= com.title %>
+    <%= com.body %>
+    <% end %>
+    <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :category_id, :value => @category.id %>
+    <%= f.hidden_field :list_id, :value => params[:id] %>
+    <%= f.hidden_field :item_id, :value => i.id %>
+    <%= f.submit 'Add to Gear', class: "btn btn-success", id: "add" %>
+    <% if @list.is_finished(params[:category_id]) %>
+    <%= link_to 'Skip', users_path(current_user), class: "btn btn-danger" %>
+    <% else %>
+    <%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "btn btn-warning" %>
+    <% end %>
+    <% end %>
+    </div>
+  </div>
 </div>
+
+</div>
+</div>
+
 <% end %>
