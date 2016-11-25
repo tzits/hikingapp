@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :checklists
   has_many :comments
   has_many :user_list_category_items, dependent: :destroy
   has_many :items, through: :user_list_category_items
