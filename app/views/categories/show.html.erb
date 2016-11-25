@@ -1,13 +1,13 @@
 <%= link_to 'Add your Own', user_list_category_items_path, class: "btn btn-info" %>
 
 <div class="col-sm-12 col-lg-12"><h3> <%= @category.name %></h3></div>
+<div class='container-fluid'>
  <% @category.items.each do |i| %>
-<div class="col-sm-12 col-lg-4">
+<div class="col-sm-12 col-lg-4" style='margin-top:20px'>
    <%= i.image %>
    <p><%= i.name %></p>
    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-<%=i.id%>">See More</button>
  </div>
-</div>
 
 <div id="modal-<%=i.id%>" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -32,7 +32,7 @@
     <%= f.hidden_field :item_id, :value => i.id %>
     <%= f.submit 'Add to Gear', class: "btn btn-success", id: "add" %>
     <% if @list.is_finished(params[:category_id]) %>
-    <%= link_to 'Skip', users_path(current_user), class: "btn btn-danger" %>
+    <%= link_to 'Skip', user_path(current_user), class: "btn btn-danger" %>
     <% else %>
     <%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "btn btn-warning" %>
     <% end %>
@@ -42,6 +42,6 @@
 </div>
 
 </div>
-</div>
 
 <% end %>
+</div>
