@@ -25,10 +25,8 @@
   </div>
 </div>
 <div class='container'>
-<div class='row'>
   <% if @sql_bike.count > 0 %>
   <h2>Biking List</h2>
-</div>
 <% @sql_bike.each do |l| %>
 <div class='row'>
   <div class="col-sm-4 col-lg-2">
@@ -36,14 +34,13 @@
     <%= Item.find(l.item_id).name %>
   </div>
   <% end %>
-</div>
   <% end %>
 </div>
 </div>
-<div class='row'>
+</div>
+<div class='container'>
   <% if @sql_hike.count > 0 %>
   <h2>Hiking List</h2>
-</div>
 <% @sql_hike.each do |l| %>
 <div class='row'>
   <div class="col-sm-4 col-lg-2">
@@ -54,15 +51,16 @@
   <% end %>
 </div>
 </div>
-<div class='row'>
+</div>
+<div class='container'>
 <% if @sql_canoe.count > 0 %>
   <h2>Canoeing List</h2>
-</div>
 <% @sql_canoe.each do |l| %>
 <div class='row'>
   <div class="small-2 large-2 column"><%= Item.find(l.item_id).name %></div>
 <% end %>
 <% end %>
+</div>
 </div>
 </div>
 </div>
