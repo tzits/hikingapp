@@ -4,10 +4,9 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   private
-  
+
   def require_login
     if !current_user
-      #send an http response to stop program execution
       redirect_to root_path
     end
   end
