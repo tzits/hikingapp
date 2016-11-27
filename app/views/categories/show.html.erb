@@ -23,12 +23,14 @@
     <%= com.title %>
     <%= com.body %>
     <% end %>
+    <% if current_user %>
     <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :category_id, :value => @category.id %>
     <%= f.hidden_field :list_id, :value => params[:id] %>
     <%= f.hidden_field :item_id, :value => i.id %>
     <%= f.submit 'Add to Gear', class: "btn btn-success", id: "add" %>
+    <% end %>
     <% if @list.is_finished(params[:category_id]) %>
     <%= link_to 'Skip', user_path(current_user), class: "btn btn-danger" %>
     <% else %>

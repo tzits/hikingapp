@@ -1,6 +1,6 @@
 class ChecklistsController < ApplicationController
   def index
-    @checklsits = Checklist.all
+    @checklists = current_user.checklists
   end
   def show
     @checklist = Checklist.find(params[:id])

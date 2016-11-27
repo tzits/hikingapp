@@ -57,8 +57,8 @@ Category.second.items.push(Item.find(19))
 Category.second.items.push(Item.find(20))
 
 Category.create(name: 'Sleeping Bag')
-Item.create(name: '', brand: '', weight: 0, size: 0, unit: "", price: 0, image: 'https://www.rei.com')
-Item.create(name: '', brand: '', weight: 0, size: 0, unit: "", price: 0, image: 'https://www.rei.com')
+Item.create(name: 'Flash', brand: 'REI', weight: 1.75, size: 29, unit: "F", price: 0, image: 'https://www.rei.com/media/13cfda70-4b63-42d0-96f2-91a7a920fc6d')
+Item.create(name: 'Spark SPI', brand: 'Sea to Summit', weight: 0.85, size: 46, unit: "F", price: 0, image: 'https://www.rei.com/media/d04806c9-a99b-44eb-87b1-d74437ca2809')
 Item.create(name: '', brand: '', weight: 0, size: 0, unit: "", price: 0, image: 'https://www.rei.com')
 Item.create(name: '', brand: '', weight: 0, size: 0, unit: "", price: 0, image: 'https://www.rei.com')
 Item.create(name: '', brand: '', weight: 0, size: 0, unit: "", price: 0, image: 'https://www.rei.com')
@@ -102,15 +102,14 @@ Category.create(name: 'Helmet')
 Category.create(name: 'Bike Bag')
 Category.create(name: 'Canoe')
 
-
-
-
 List.first.categories.push(Category.first)
 List.first.categories.push(Category.find(2))
 List.first.categories.push(Category.find(3))
 List.first.categories.push(Category.find(4))
 List.first.categories.push(Category.find(5))
 List.first.categories.push(Category.find(6))
+
+
 List.second.categories.push(Category.find(2))
 List.second.categories.push(Category.find(3))
 List.second.categories.push(Category.find(6))
@@ -126,3 +125,14 @@ List.last.categories.push(Category.find(6))
 
 UserListCategoryItem.create(user_id: 1, list_id: 1, category_id: 1, item_id: 1)
 UserListCategoryItem.create(user_id: 1, list_id: 1, category_id: 1, item_id: 2)
+
+Checklist.create(name: 'hiking list')
+ChecklistItem.create(name: 'rope', checked: false, checklist_id: 1)
+ChecklistItem.create(name: 'poles', checked: false, checklist_id: 1)
+ChecklistItem.create(name: 'sleeping pad', checked: false, checklist_id: 1)
+
+Checklist.create(name: 'biking list')
+Checklist.create(name: 'canoeing list')
+User.first.checklists.push(Checklist.find(1))
+User.first.checklists.push(Checklist.find(2))
+User.first.checklists.push(Checklist.find(3))

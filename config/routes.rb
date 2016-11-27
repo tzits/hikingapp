@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   post '/register', to: 'users#create'
   get '/lists/:id/categories/:category_id', to: 'categories#show', as: 'category'
   get '/checklists', to: 'checklists#index'
-  get '/checklists/:id', to: 'checklists#show'
+  get '/checklists/:id', to: 'checklists#show', as: 'checklist'
 end
