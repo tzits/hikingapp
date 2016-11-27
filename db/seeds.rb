@@ -127,9 +127,9 @@ UserListCategoryItem.create(user_id: 1, list_id: 1, category_id: 1, item_id: 1)
 UserListCategoryItem.create(user_id: 1, list_id: 1, category_id: 1, item_id: 2)
 
 Checklist.create(name: 'hiking list')
-ChecklistItem.create(name: 'rope', checked: false, checklist_id: 1)
-ChecklistItem.create(name: 'poles', checked: false, checklist_id: 1)
-ChecklistItem.create(name: 'sleeping pad', checked: false, checklist_id: 1)
+ChecklistItem.create(name: 'rope', checked: false, advice: 'good for bear lines', checklist_id: 1)
+ChecklistItem.create(name: 'poles', checked: false, advice: 'essential to save your knees', checklist_id: 1)
+ChecklistItem.create(name: 'sleeping pad', checked: false, advice: 'you could sleep on the ground, but this is more pleasant', checklist_id: 1)
 
 Checklist.create(name: 'biking list')
 Checklist.create(name: 'canoeing list')
