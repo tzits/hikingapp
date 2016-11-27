@@ -37,6 +37,13 @@
     <%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "btn btn-warning" %>
     <% end %>
     <% end %>
+    <% i.comments.each do |com| %>
+    <%= com.title %>
+    <%= com.rating %>
+    <%= com.body %>
+    <%= com.user.first_name %>
+    <%= com.user.experience %>
+    <% end %>
     </div>
   </div>
 </div>

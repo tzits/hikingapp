@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get '/lists/:id/categories/:category_id', to: 'categories#show', as: 'category'
   get '/checklists', to: 'checklists#index'
   get '/checklists/:id', to: 'checklists#show', as: 'checklist'
+  post '/comments', to: 'comments#create'
 end

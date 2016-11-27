@@ -46,6 +46,33 @@
   <div class="col-sm-4 col-lg-2">
     <%=image_tag Item.find(l.item_id).image, style: 'height:100px' %>
     <%= Item.find(l.item_id).name %>
+    <!-- modal to add comments -->
+    <button class="btn btn-default" data-toggle="modal" data-target="#modal-<%=l.item_id%>">Comment</button>
+    <div id="modal-<%=l.item_id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= form_for (@comment = Comment.new) do |f| %>
+        <label>Comment Title</label><br>
+        <%= f.text_field :title, class: "form-control" %>
+        <label>Comment</label><br>
+        <%= f.text_field :body, class: "form-control" %>
+        <label>Rating</label><br>
+        <%= f.number_field :rating, class: "form-control" %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :item_id, :value => l.item_id %>
+        <%= f.submit 'Comment', class: "btn btn-success", id: "add" %>
+        <% end %>
+
+        </div>
+      </div>
+    </div>
+
+    </div>
+
     <%= link_to 'Remove Item', item_delete_path(l.item_id), :method => :delete, class: 'btn btn-danger' %>
   </div>
   <% end %>
