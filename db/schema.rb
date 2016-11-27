@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127195938) do
+ActiveRecord::Schema.define(version: 20161127200705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,16 @@ ActiveRecord::Schema.define(version: 20161127195938) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_checklist_items", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "checklist_item_id"
+    t.boolean  "checked"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["checklist_item_id"], name: "index_user_checklist_items_on_checklist_item_id", using: :btree
+    t.index ["user_id"], name: "index_user_checklist_items_on_user_id", using: :btree
+  end
+
   create_table "user_list_category_items", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "category_id"
@@ -114,6 +124,8 @@ ActiveRecord::Schema.define(version: 20161127195938) do
   add_foreign_key "items", "categories"
   add_foreign_key "list_contents", "categories"
   add_foreign_key "list_contents", "lists"
+  add_foreign_key "user_checklist_items", "checklist_items"
+  add_foreign_key "user_checklist_items", "users"
   add_foreign_key "user_list_category_items", "categories"
   add_foreign_key "user_list_category_items", "items"
   add_foreign_key "user_list_category_items", "lists"
