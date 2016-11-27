@@ -1,13 +1,11 @@
-<%= link_to 'Add your Own', user_list_category_items_path, class: "btn btn-info" %>
-
 <div class="col-sm-12 col-lg-12"><h3> <%= @category.name %></h3></div>
+<div class='container-fluid'>
  <% @category.items.each do |i| %>
-<div class="col-sm-12 col-lg-4">
-   <%= i.image %>
+<div class="col-sm-12 col-lg-4" style='margin-top:20px'>
+   <%= image_tag i.image, style: 'height:200px'%>
    <p><%= i.name %></p>
    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-<%=i.id%>">See More</button>
  </div>
-</div>
 
 <div id="modal-<%=i.id%>" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -17,22 +15,24 @@
     <h4 class="modal-title"><%= i.brand %> <%= i.name %></h4>
   </div>
   <div class="modal-body">
-    <%= i.image %>
-    <%= i.brand %> <%= i.name %>
-    <%= i.size %> <%= i.unit %>
-    <%= i.weight %>
+    <%= image_tag i.image, style: 'height:200px;'%><br>
+    <h3><%= i.brand %> <%= i.name %></h3>
+    <h4><%= i.size %> <%= i.unit %></h4>
+    <h4><%= i.weight %> pounds</h4> <h4>$<%= i.price %></h4>
     <% i.comments.each do |com| %>
     <%= com.title %>
     <%= com.body %>
     <% end %>
+    <% if current_user %>
     <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :category_id, :value => @category.id %>
     <%= f.hidden_field :list_id, :value => params[:id] %>
     <%= f.hidden_field :item_id, :value => i.id %>
     <%= f.submit 'Add to Gear', class: "btn btn-success", id: "add" %>
+    <% end %>
     <% if @list.is_finished(params[:category_id]) %>
-    <%= link_to 'Skip', users_path(current_user), class: "btn btn-danger" %>
+    <%= link_to 'Skip', user_path(current_user), class: "btn btn-danger" %>
     <% else %>
     <%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "btn btn-warning" %>
     <% end %>
@@ -42,6 +42,6 @@
 </div>
 
 </div>
-</div>
 
 <% end %>
+</div>
