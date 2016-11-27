@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       login(@user)
+      add_checklists(@user)
       redirect_to user_path(@user)
     else
       flash[:error] = @user.errors.full_messages.join(". ")

@@ -46,7 +46,7 @@
   <div class="col-sm-4 col-lg-2">
     <%=image_tag Item.find(l.item_id).image, style: 'height:100px' %>
     <%= Item.find(l.item_id).name %>
-    <%= link_to 'Remove Item', item_delete_path(l.item_id), :method => :delete %>
+    <%= link_to 'Remove Item', item_delete_path(l.item_id), :method => :delete, class: 'btn btn-danger' %>
   </div>
   <% end %>
   <% end %>
