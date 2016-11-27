@@ -1,6 +1,6 @@
 <div class="panel callout radius">
   <div class='row'>
-    <div class="col-sm-12 col-lg-4"><%= image_tag @user.avatar.url(:thumb), class: 'col-sm-12 col-sm-4' %>
+    <div class="col-sm-12 col-lg-4"><%= image_tag @user.avatar.url(:thumb), class: 'col-sm-12' %>
     </div>
     <div class="col-sm-12 col-lg-4" style='text-align:center'>
       <% if @user.trail_name != "" %>
@@ -21,7 +21,7 @@
 </div>
 <div class='row' >
   <div class="col-sm-12 col-lg-12" style='margin-top:25px'>
-    <%= link_to 'Create New Gear List', lists_path, class:"btn btn-large" %>
+    <%= link_to 'Create New Gear List', lists_path, class:"btn btn-lg btn-default" %>
   </div>
 </div>
 <div class='container'>
@@ -44,8 +44,9 @@
 <% @sql_hike.each do |l| %>
 <div class='row'>
   <div class="col-sm-4 col-lg-2">
-    <%= Item.find(l.item_id).image %>
+    <%=image_tag Item.find(l.item_id).image, style: 'height:100px' %>
     <%= Item.find(l.item_id).name %>
+    <%= link_to 'Remove Item', item_delete_path(l.item_id), :method => :delete %>
   </div>
   <% end %>
   <% end %>
