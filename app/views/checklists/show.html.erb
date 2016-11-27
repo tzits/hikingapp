@@ -1,3 +1,7 @@
-<% @checklist.checklist_items.each do |i| %>
-<%= i.name %>
+<% @sql_list.each do |i| %>
+<% @checklist_item = ChecklistItem.find(i.checklist_item_id) %>
+<% if ((@checklist_item.checklist.id.to_s) == (params[:id].to_s)) %>
+<%= @checklist_item.name %>
+<% end %>
+
 <% end %>
