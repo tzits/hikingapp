@@ -9,7 +9,7 @@ User.create(first_name: 'toby', email: 'toby@toby.com', password_digest: 'passwo
 User.create(first_name: 'natalia', email: 'natalia@natalia.com', password_digest: 'password')
 User.create(first_name: 'teddy', email: 'teddy@teddy.com', password_digest: 'password')
 
-List.create(name: 'Hiking', image: '')
+List.create(name: 'Hiking', image: 'https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/14238234_10207786522205917_3580828806313491037_n.jpg?oh=5f33630edb6b80123caed2741911ad8e&oe=58BFECC8')
 # Item.create(name: '', brand: '', weight: , size: , unit: , price: , image: 'https://www.rei.com')
 Category.create(name: 'Pack')
 Item.create(name: 'Atmos', brand: 'Osprey', weight: 4.2, size: 65, price: 260, unit: 'liters', image: 'https://www.rei.com/media/5e79d337-3acb-4494-86e1-fc455cbf40b4?size=2000%2520')
@@ -95,8 +95,8 @@ Category.find(6).items.push(Item.find(34))
 Category.find(6).items.push(Item.find(35))
 
 
-List.create(name: 'Biking', image: '')
-List.create(name: 'Canoeing', image: '')
+List.create(name: 'Biking', image: 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwi0-bXI_cvQAhVoh1QKHRvYDeEQjBwIBA&url=http%3A%2F%2Fpreviews.123rf.com%2Fimages%2Fkotangens%2Fkotangens1302%2Fkotangens130200002%2F17952703-Mountain-bike-wheel-and-sommer-alpine-landscape-Stock-Photo-cycling.jpg&psig=AFQjCNGSJx6AhRKQeBOtSCb_Un7D5C28NA&ust=1480440690578699')
+List.create(name: 'Canoeing', image: 'https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/14212796_10207786536606277_5502408418187962023_n.jpg?oh=aecfa1bf69260984ac84debd7362c9a0&oe=58C600E9')
 Category.create(name: 'Bike')
 Category.create(name: 'Helmet')
 Category.create(name: 'Bike Bag')

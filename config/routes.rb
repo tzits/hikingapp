@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pages/show'
+
   resources :users
   root to: 'sessions#new'
   get '/lists', to: 'lists#index'
@@ -16,4 +18,5 @@ Rails.application.routes.draw do
   get '/checklists/:id', to: 'checklists#show', as: 'checklist'
   post '/comments', to: 'comments#create'
   post '/checklistitems', to: 'checklistitems#update', as: 'checklist_item'
+  get '/pages/:page', to: "pages#show", as: "page"
 end
