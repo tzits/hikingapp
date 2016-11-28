@@ -1,0 +1,19 @@
+<div id="checklists-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+  </div>
+  <div class="modal-body">
+<% Checklist.all.each do |checklist| %>
+<div class='container'>
+<div class = 'row'>
+<h2><%= link_to checklist.name, checklist_path(checklist) %><br><h2>
+
+</div>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
