@@ -14,7 +14,11 @@
     <div class="col-sm-12 col-lg-4">
       <%= @user.bio %><br>
       <% if (current_user.id == @user.id) %>
+      <% if (current_user.bio == nil) %>
+      <%= link_to 'Add a Bio', edit_user_path(@user) %>
+      <% else %>
       <%= link_to 'Edit', edit_user_path(@user) %>
+      <% end %>
       <% end %>
     </div>
   </div>
@@ -27,7 +31,7 @@
 <div class='container'>
   <% if @sql_bike.count > 0 %>
   <h2>Biking List</h2>
-<% @sql_bike.each do |l| %>
+  <% @sql_bike.each do |l| %>
 <div class='row'>
   <div class="col-sm-4 col-lg-2">
     <%= Item.find(l.item_id).image %>
@@ -44,9 +48,10 @@
 <% @sql_hike.each do |l| %>
 <div class='row'>
   <div class="col-sm-4 col-lg-2">
-    <%=image_tag Item.find(l.item_id).image, style: 'height:100px' %>
-    <%= Item.find(l.item_id).name %>
+    <%=image_tag Item.find(l.item_id).image, style: 'height:100px' %><br>
+    <%= Item.find(l.item_id).name %><br>
     <!-- modal to add comments -->
+    <% if ((current_user.id).to_s == (params[:id]).to_s) %>
     <button class="btn btn-default" data-toggle="modal" data-target="#modal-<%=l.item_id%>">Comment</button>
     <div id="modal-<%=l.item_id%>" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -75,6 +80,7 @@
 
     <%= link_to 'Remove Item', item_delete_path(l.item_id), :method => :delete, class: 'btn btn-danger' %>
   </div>
+  <% end %>
   <% end %>
   <% end %>
 </div>

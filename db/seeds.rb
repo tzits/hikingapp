@@ -9,7 +9,7 @@ User.create(first_name: 'toby', email: 'toby@toby.com', password_digest: 'passwo
 User.create(first_name: 'natalia', email: 'natalia@natalia.com', password_digest: 'password')
 User.create(first_name: 'teddy', email: 'teddy@teddy.com', password_digest: 'password')
 
-List.create(name: 'Hiking')
+List.create(name: 'Hiking', image: '')
 # Item.create(name: '', brand: '', weight: , size: , unit: , price: , image: 'https://www.rei.com')
 Category.create(name: 'Pack')
 Item.create(name: 'Atmos', brand: 'Osprey', weight: 4.2, size: 65, price: 260, unit: 'liters', image: 'https://www.rei.com/media/5e79d337-3acb-4494-86e1-fc455cbf40b4?size=2000%2520')
@@ -95,8 +95,8 @@ Category.find(6).items.push(Item.find(34))
 Category.find(6).items.push(Item.find(35))
 
 
-List.create(name: 'Biking')
-List.create(name: 'Canoeing')
+List.create(name: 'Biking', image: '')
+List.create(name: 'Canoeing', image: '')
 Category.create(name: 'Bike')
 Category.create(name: 'Helmet')
 Category.create(name: 'Bike Bag')
@@ -123,8 +123,8 @@ List.last.categories.push(Category.find(5))
 List.last.categories.push(Category.find(6))
 
 
-UserListCategoryItem.create(user_id: 1, list_id: 1, category_id: 1, item_id: 1)
-UserListCategoryItem.create(user_id: 1, list_id: 1, category_id: 1, item_id: 2)
+# UserListCategoryItem.create(user_id: 1, list_id: 1, category_id: 1, item_id: 1)
+# UserListCategoryItem.create(user_id: 1, list_id: 1, category_id: 1, item_id: 2)
 
 Checklist.create(name: 'hiking list')
 ChecklistItem.create(name: 'rope', checked: false, advice: 'good for bear lines', checklist_id: 1)
@@ -133,6 +133,3 @@ ChecklistItem.create(name: 'sleeping pad', checked: false, advice: 'you could sl
 
 Checklist.create(name: 'biking list')
 Checklist.create(name: 'canoeing list')
-User.first.checklists.push(Checklist.find(1))
-User.first.checklists.push(Checklist.find(2))
-User.first.checklists.push(Checklist.find(3))

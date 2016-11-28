@@ -19,10 +19,6 @@
     <h3><%= i.brand %> <%= i.name %></h3>
     <h4><%= i.size %> <%= i.unit %></h4>
     <h4><%= i.weight %> pounds</h4> <h4>$<%= i.price %></h4>
-    <% i.comments.each do |com| %>
-    <%= com.title %>
-    <%= com.body %>
-    <% end %>
     <% if current_user %>
     <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -37,13 +33,13 @@
     <%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "btn btn-warning" %>
     <% end %>
     <% end %>
+    <div>
     <% i.comments.each do |com| %>
-    <%= com.title %>
-    <%= com.rating %>
-    <%= com.body %>
-    <%= com.user.first_name %>
-    <%= com.user.experience %>
+    <h4><%= com.title %> <%= com.rating %> stars</h4>
+    <h6><%= com.user.first_name %> <%= com.user.experience %></h6>
+    <p><%= com.body %></p>
     <% end %>
+  </div>
     </div>
   </div>
 </div>
