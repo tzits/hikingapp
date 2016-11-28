@@ -1,7 +1,8 @@
+<body style='background-image:url("https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/14238257_10207786539646353_6452473052756311490_n.jpg?oh=47be3e17022dcf03837aed37339b1837&oe=58B9D400");background-repeat:no-repeat; background-size:100% '>
 <% @sql_list.each do |i| %>
 <% @checklist_item = ChecklistItem.find(i.checklist_item_id) %>
 <% if ((@checklist_item.checklist.id.to_s) == (params[:id].to_s)) %>
-<div class='container'>
+<div class='container' style='background-color:rgba(200,200,200,.5)'>
 <h4><%= form_for @checklist_item do |f| %>
 <%= f.check_box :checked %>
 <%= @checklist_item.name %></h4>
@@ -11,3 +12,4 @@
 </div>
 <% end %>
 <% end %>
+</body>
