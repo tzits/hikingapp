@@ -13,8 +13,13 @@
                 <%= f.hidden_field :the_id, :value => item.id %>
                 <%= f.submit "  ", class: "btn btn-default btn-xs pull-left", style: 'margin-right:4px' %>
               <% end %>
-            <% else %>
-              <span class='glyphicon glyphicon-remove'></span>
+            <% else i.checked == true %>
+
+              <%= form_for item, :as => :patch, :url => checklist_item_path do |f| %>
+              <%= f.hidden_field :checked, :value => false %>
+              <%= f.hidden_field :the_id, :value => item.id %>
+              <%= f.submit "x", class: "btn btn-default btn-xs pull-left", style: 'margin-right:4px' %>
+          <% end %>
             <% end %>
             <%= item.name %>
             <% if item.advice != "" %>

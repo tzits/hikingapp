@@ -3,9 +3,17 @@
     <% @category.items.each do |i| %>
     <!-- renders each image -->
     <div class="col-sm-12 col-lg-4" style='margin-top:20px'>
-      <%= image_tag i.image, style: 'height:200px'%>
-      <p><%= i.name %></p>
-      <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-<%=i.id%>">See More</button>
+      <%= image_tag i.image, class: 'center-block', style: 'height:200px'%>
+      <p style='text-align:center'><%= i.name %></p>
+      <% if current_user %>
+      <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :category_id, :value => @category.id %>
+        <%= f.hidden_field :list_id, :value => params[:id] %>
+        <%= f.hidden_field :item_id, :value => i.id %>
+        <%= f.submit 'Add to Gear', class: "btn btn-success btn-sm center-block", id: "add" %>
+      <% end %>
+      <button class="btn btn-info btn-md center-block" data-toggle="modal" data-target="#modal-<%=i.id%>">See More</button>
     </div>
            <!-- item modal -->
     <div id="modal-<%=i.id%>" class="modal fade" role="dialog">
@@ -21,7 +29,7 @@
             <h4><%= i.size %> <%= i.unit %></h4>
             <h4><%= i.weight %> pounds</h4> <h4>$<%= i.price %></h4>
             <!-- add button -->
-            <% if current_user %>
+
               <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
                 <%= f.hidden_field :user_id, :value => current_user.id %>
                 <%= f.hidden_field :category_id, :value => @category.id %>
@@ -29,18 +37,18 @@
                 <%= f.hidden_field :item_id, :value => i.id %>
                 <%= f.submit 'Add to Gear', class: "btn btn-success", id: "add" %>
               <% end %>
+              <% end %>
             <!-- skip button -->
               <% if @list.is_finished(params[:category_id]) %>
                 <%= link_to 'Skip', user_path(current_user), class: "btn btn-danger" %>
               <% else %>
                 <%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "btn btn-warning" %>
               <% end %>
-            <% end %>
             <!-- comments -->
             <div>
               <% i.comments.each do |com| %>
                 <h4><%= com.title %> <%= com.rating %> stars</h4>
-                <h6><%= com.user.first_name %> <%= com.user.experience %></h6>
+                <h6><%= com.user.first_name %>: <%= com.user.experience %></h6>
                 <p><%= com.body %></p>
               <% end %>
             </div>
