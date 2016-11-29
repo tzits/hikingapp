@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/lists/:id', to: 'lists#show', as: 'list'
   post '/user_list_category_items', to: 'user_list_category_items#create'
   delete '/user_list_category_items/:item_id', to: 'user_list_category_items#destroy', as: 'item_delete'
+  post '/items', to: 'items#create', as: 'items'
   get '/items/:id', to: 'items#show', as: 'item'
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'

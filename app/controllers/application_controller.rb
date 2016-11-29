@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include UsersHelper
   include CategoriesHelper
   include ChecklistItemsHelper
+  include ItemsHelper
 
   private
 
