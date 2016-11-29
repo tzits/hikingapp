@@ -5,8 +5,8 @@ class CommentsController < ApplicationController
       @comment.save
       redirect_to user_path(current_user)
     else
-      flash[:error] = @user.errors.full_messages.join(". ")
-      render :new
+      flash[:error] = current_user.errors.full_messages.join(". ")
+      redirect_to user_path(current_user)
     end
   end
 

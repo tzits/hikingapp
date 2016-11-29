@@ -1,17 +1,18 @@
-<body style='background-image:url("https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/14183921_10207786523325945_6229699399835756764_n.jpg?oh=953e5aaf0a6f8bc1cf501ab7cf023668&oe=58C8DA68");background-repeat:no-repeat; background-size:100% '>
-<div class="container">
-  <h1>Login to Your Account</h1>
-<%= form_tag login_path do %>
-<label for="email">Email</label>
-<br>
-<%= text_field_tag :email, nil, required: true, class: "form-control", style: 'width:40% !important' %>
-<br>
-<label for="password">Password</label>
-<br>
-<%= password_field_tag :password, nil, required: true, class: "form-control", style: 'width:40% !important' %>
-<br>
-<%= submit_tag "Log In" %>
-<button><%= link_to 'Register', new_user_path, style:'color:black;' %></button>
-<% end %>
-</div>
+<body style='background-image:url("https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/14183921_10207786523325945_6229699399835756764_n.jpg?oh=953e5aaf0a6f8bc1cf501ab7cf023668&oe=58C8DA68");background-repeat:no-repeat;background-size:100%;'
+>
+  <div class="container">
+    <h1>Login to Your Account</h1>
+    <%= form_tag login_path do %>
+      <label for="email">Email</label>
+      <br>
+      <%= text_field_tag :email, nil, required: true, class: "form-control login" %>
+      <br>
+      <label for="password">Password</label>
+      <br>
+      <%= password_field_tag :password, nil, required: true, class: "form-control login" %>
+      <br>
+      <%= submit_tag "Log In", class: 'btn btn-default' %>
+      <button class='btn btn-default'><%= link_to 'Register', new_user_path, style:'color:black;' %></button>
+    <% end %>
+  </div>
 </body>

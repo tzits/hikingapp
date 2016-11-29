@@ -1,9 +1,8 @@
 class ChecklistItemsController < ApplicationController
   def update
-    @item = ChecklistItem.find(params[:patch][:the_id])
-    @item.checked = true
-    @item.save
-    redirect_to checklist_path(@item.checklist)
+    item = ChecklistItem.find(params[:patch][:the_id])
+    check_item(item)
+    redirect_to checklist_path(item.checklist)
   end
 
   private

@@ -1,55 +1,66 @@
 <div class="col-sm-12 col-lg-12"><h3> <%= @category.name %></h3></div>
-<div class='container-fluid'>
- <% @category.items.each do |i| %>
-<div class="col-sm-12 col-lg-4" style='margin-top:20px'>
-   <%= image_tag i.image, style: 'height:200px'%>
-   <p><%= i.name %></p>
-   <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-<%=i.id%>">See More</button>
- </div>
-
-<div id="modal-<%=i.id%>" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-<div class="modal-content">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
-    <h4 class="modal-title"><%= i.brand %> <%= i.name %></h4>
-  </div>
-  <div class="modal-body">
-    <%= image_tag i.image, style: 'height:200px;'%><br>
-    <h3><%= i.brand %> <%= i.name %></h3>
-    <h4><%= i.size %> <%= i.unit %></h4>
-    <h4><%= i.weight %> pounds</h4> <h4>$<%= i.price %></h4>
-    <% if current_user %>
-    <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :category_id, :value => @category.id %>
-    <%= f.hidden_field :list_id, :value => params[:id] %>
-    <%= f.hidden_field :item_id, :value => i.id %>
-    <%= f.submit 'Add to Gear', class: "btn btn-success", id: "add" %>
-    <% end %>
-    <% if @list.is_finished(params[:category_id]) %>
-    <%= link_to 'Skip', user_path(current_user), class: "btn btn-danger" %>
-    <% else %>
-    <%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "btn btn-warning" %>
-    <% end %>
-    <% end %>
-    <div>
-    <% i.comments.each do |com| %>
-    <h4><%= com.title %> <%= com.rating %> stars</h4>
-    <h6><%= com.user.first_name %> <%= com.user.experience %></h6>
-    <p><%= com.body %></p>
-    <% end %>
-  </div>
+  <div class='container-fluid'>
+    <% @category.items.each do |i| %>
+    <!-- renders each image -->
+    <div class="col-sm-12 col-lg-4" id="thumbnail_container">
+      <%= image_tag i.image, class: 'center-block', id: 'thumbnail'%>
+      <h3 style='text-align:center'><%= i.name %></h3>
+      <% if current_user %>
+      <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :category_id, :value => @category.id %>
+        <%= f.hidden_field :list_id, :value => params[:id] %>
+        <%= f.hidden_field :item_id, :value => i.id %>
+        <%= f.submit 'Add to Gear', class: "btn btn-success btn-sm center-block" %>
+      <% end %>
+      <button class="btn btn-info btn-md center-block" data-toggle="modal" data-target="#modal-<%=i.id%>">See More</button>
     </div>
-  </div>
-</div>
+           <!-- item modal -->
+    <div id="modal-<%=i.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><%= i.brand %> <%= i.name %></h4>
+          </div>
+          <div class="modal-body">
+            <%= image_tag i.image, style: 'height:200px;'%><br>
+            <h3><%= i.brand %> <%= i.name %></h3>
+            <h4><%= i.size %> <%= i.unit %></h4>
+            <h4><%= i.weight %> pounds</h4> <h4>$<%= i.price %></h4>
+            <!-- add button -->
 
-</div>
-
-<% end %>
+              <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%= f.hidden_field :category_id, :value => @category.id %>
+                <%= f.hidden_field :list_id, :value => params[:id] %>
+                <%= f.hidden_field :item_id, :value => i.id %>
+                <%= f.submit 'Add to Gear', class: "btn btn-success", id: "add" %>
+              <% end %>
+              <% end %>
+            <!-- skip button -->
+              <% if @list.is_finished(params[:category_id]) %>
+                <%= link_to 'Skip', user_path(current_user), class: "btn btn-danger" %>
+              <% else %>
+                <%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "btn btn-warning" %>
+              <% end %>
+            <!-- comments -->
+            <div>
+              <% i.comments.each do |com| %>
+                <h4><%= com.title %> <%= com.rating %> stars</h4>
+                <h6><%= com.user.first_name %>: <%= com.user.experience %></h6>
+                <p><%= com.body %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 <% if current_user %>
-<div>
-  <h3 style='float:right'><%= @weight %> pounds</h3>
-</div>
+  <div id='info'>
+    <h3>$ <%= @price %></h3>
+    <h3><%= @weight %> pounds</h3>
+  </div>
 <% end %>
