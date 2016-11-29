@@ -9,18 +9,25 @@
             <h4 class="modal-title">Add Your Own</h4>
           </div>
           <div class="modal-body">
-              <%= form_for (@item = Item.new) do |f| %>
-                <%= f.text_field :name, placeholder: 'name', class: 'form-control'%>
-                <%= f.text_field :brand, placeholder: 'brand', class: 'form-control'%>
-                <%= f.number_field :price, placeholder: 'price', class: 'form-control' %>
-                <%= f.number_field :weight, placeholder: 'weight', class: 'form-control' %>
-                <%= f.text_field :image, placeholder: 'image url', class: 'form-control' %>
-                <%= f.number_field :size, placeholder: 'size', class: 'form-control' %>
-                <%= f.text_field :unit, placeholder: 'unit', class: 'form-control' %>
-                <%= f.hidden_field :category_id, :value => @category.id %>
-                <%= f.hidden_field :list_id, :value => params[:id] %>
-                <%= f.submit 'Add to Your Gear', class: "btn btn-success", id: "add" %>
-              <% end %>
+            <%= form_for (@item = Item.new) do |f| %>
+              <label> name: </label>
+              <%= f.text_field :name, class: 'inline form-control' %><br>
+              <label> brand: </label>
+              <%= f.text_field :brand, class: 'inline form-control' %><br>
+              <label> price: </label>
+              <%= f.number_field :price, class: 'inline form-control' %><br>
+              <label> weight: </label>
+              <%= f.number_field :weight, class: 'inline form-control' %><br>
+              <label> image url: </label>
+              <%= f.text_field :image, class: 'inline form-control' %><br>
+              <label> size: </label>
+              <%= f.number_field :size, style: 'width:29%;height:34px' %>
+              <label> unit: </label>
+              <%= f.text_field :unit, style: 'height:34px;width:30%;margin-left:5px;' %>
+              <%= f.hidden_field :category_id, :value => @category.id %>
+              <%= f.hidden_field :list_id, :value => params[:id] %><br><br>
+              <%= f.submit 'Add to Your Gear', class: "btn btn-success", id: "add" %>
+            <% end %>
           </div>
         </div>
       </div>

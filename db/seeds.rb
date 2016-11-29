@@ -168,7 +168,6 @@ ChecklistItem.create(important: true, name: 'Shorts', checked: false, advice: ''
 ChecklistItem.create(important: true, name: 'Shirt', checked: false, advice: '', checklist_id: 1)
 ChecklistItem.create(important: true, name: 'Puffy Jacket', checked: false, advice: 'Perfect to keep you warm in most conditions you will encounter', checklist_id: 1)
 ChecklistItem.create(important: true, name: 'Rain Coat', checked: false, advice: 'It will rain, or even snow, and getting wet and cold can be very dangerous', checklist_id: 1)
-
 ChecklistItem.create(important: false, name: 'Hat', checked: false, advice: '', checklist_id: 1)
 ChecklistItem.create(important: false, name: 'rope', checked: false, advice: 'Good for bear lines', checklist_id: 1)
 ChecklistItem.create(important: false, name: 'Bug Spray', checked: false, advice: 'You need it in Maine', checklist_id: 1)
@@ -180,7 +179,29 @@ ChecklistItem.create(important: false, name: 'Sunblock', checked: false, advice:
 ChecklistItem.create(important: false, name: 'External Charger', checked: false, advice: '', checklist_id: 1)
 ChecklistItem.create(important: false, name: 'Sleeping Bag Liner', checked: false, advice: '', checklist_id: 1)
 
-
-
 Checklist.create(name: 'biking list')
+ChecklistItem.create(important: true, name: 'Helmet', checked: false, advice: 'A Must for Any Long Bike Trip', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Saddlebag Bag', checked: false, advice: 'Extra storgae in on the handlebars', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Handlebar Bag', checked: false, advice: 'Extra storgae in an underseat bag', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Cargo Rack', checked: false, advice: 'For back tire to carry panniers', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Bike Lights', checked: false, advice: 'Can also be used to light up camp', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Lock', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'GPS', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Mirror', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Watterbottles', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Pump', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Tire Levers', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Multitool', checked: false, advice: 'With an integrated allen wrench', checklist_id: 2)
+ChecklistItem.create(important: false, name: 'Oil', checked: false, advice: 'Keeps the bike running smoothly', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Spare Tire', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: false, name: 'Rainwear', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: false, name: 'Wicking Jersey', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: false, name: 'Biking Shoes', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: true, name: 'Windbreaker', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: false, name: 'Sunscreen', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: false, name: 'External Battery Back', checked: false, advice: '', checklist_id: 2)
+ChecklistItem.create(important: false, name: 'First Aid Kit', checked: false, advice: 'Can be found in most outdoor sports stores', cheslist_id: 2)
+ChecklistItem.create(important: true, name: 'Fender', checked: false, advice: 'Great to keep yourself a little dryer on the wet roads', checklist_id: 2)
+
+
 Checklist.create(name: 'canoeing list')
