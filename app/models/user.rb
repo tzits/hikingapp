@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   def self.confirm (email, password)
     user = User.find_by(email: email)
+    if user
     user.authenticate(password)
+    end
   end
 end

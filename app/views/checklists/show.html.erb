@@ -1,16 +1,12 @@
 
 <body style='background-image:url("https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/14238257_10207786539646353_6452473052756311490_n.jpg?oh=47be3e17022dcf03837aed37339b1837&oe=58B9D400");background-repeat:no-repeat; background-size:100% '>
+  <div class='container' style='background-color:rgba(200,200,200,.5)'>
+    <div class='row'>
 <% @sql_list.each do |i| %>
 <% item = ChecklistItem.find(i.checklist_item_id) %>
 <% if ((item.checklist.id.to_s) == (params[:id].to_s)) %>
-<div class='container' style='background-color:rgba(200,200,200,.5)'>
-  <div class='row'>
-  <% if item.important == true  %>
-    <div class='col-lg-4' style='float:left'>
-  <% elsif item.important == false %>
-    <div class='col-lg-4' style='float:right'>
-  <% end %>
-  <% if item.checked == false %>
+    <div class='col-lg-3 col-xs-6' style='margin-bottom:5px'>
+  <% if i.checked == false %>
           <%= form_for item, :as => :patch, :url => checklist_item_path do |f| %>
           <%= f.hidden_field :checked, :value => true %>
           <%= f.hidden_field :the_id, :value => item.id %>
@@ -21,12 +17,16 @@
   <% end %>
   <%= item.name %>
 </span>
-<br>
-<!-- <span class='advice' id='advice-<%= item.id %>' value='<%= item.id %>'><%= item.advice %></span> -->
+<a class="glyphicon glyphicon-chevron-down" role="button" data-toggle="collapse" href="#advice" aria-expanded="false" aria-controls="advice">
+</a>
+  <div class="collapse" id="advice">
+    <%= item.advice %>
+  </div>
+<% end %>
+</div>
 <% end %>
 </div>
 </div>
-</div>
-<% end %>
+
 
 </body>

@@ -15,3 +15,13 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+$("div[id^='advice']").attr('id', function(i) {
+    return "advice" + ++i;
+  });
+  $("a[href^='#advice']").attr('href', function(i) {
+    return "#advice" + ++i;
+  });
+
+})
