@@ -4,7 +4,7 @@
     <!-- renders each image -->
     <div class="col-sm-12 col-lg-4" style='margin-top:20px'>
       <%= image_tag i.image, class: 'center-block', style: 'height:200px'%>
-      <p style='text-align:center'><%= i.name %></p>
+      <h3 style='text-align:center'><%= i.name %></h3>
       <% if current_user %>
       <%= form_for (@user_list_category_item = UserListCategoryItem.new) do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
