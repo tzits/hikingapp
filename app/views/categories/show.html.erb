@@ -1,5 +1,38 @@
 <div class="col-sm-12 col-lg-12"><h3> <%= @category.name %></h3></div>
   <div class='container-fluid'>
+    <button id='addbutton' class="btn btn-danger btn-md center-block" data-toggle="modal" data-target="#addmodal">Add Your Own</button>
+    <div id="addmodal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add Your Own</h4>
+          </div>
+          <div class="modal-body">
+            <%= form_for (@item = Item.new) do |f| %>
+              <label> name: </label>
+              <%= f.text_field :name, class: 'inline form-control' %><br>
+              <label> brand: </label>
+              <%= f.text_field :brand, class: 'inline form-control' %><br>
+              <label> price: </label>
+              <%= f.number_field :price, class: 'inline form-control' %><br>
+              <label> weight: </label>
+              <%= f.number_field :weight, class: 'inline form-control' %><br>
+              <label> image url: </label>
+              <%= f.text_field :image, class: 'inline form-control' %><br>
+              <label> size: </label>
+              <%= f.number_field :size, style: 'width:29%;height:34px' %>
+              <label> unit: </label>
+              <%= f.text_field :unit, id: 'units' %>
+              <%= f.hidden_field :category_id, :value => @category.id %>
+              <%= f.hidden_field :list_id, :value => params[:id] %><br><br>
+              <%= f.submit 'Add to Your Gear', class: "btn btn-success", id: "add" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <% @category.items.each do |i| %>
     <!-- renders each image -->
     <div class="col-sm-12 col-lg-4" id="thumbnail_container">
@@ -48,7 +81,7 @@
             <div>
               <% i.comments.each do |com| %>
                 <h4><%= com.title %> <%= com.rating %> stars</h4>
-                <h6><%= com.user.first_name %>: <%= com.user.experience %></h6>
+                <h6><%= link_to com.user.first_name, user_path(com.user) %>: <%= com.user.experience %></h6>
                 <p><%= com.body %></p>
               <% end %>
             </div>
