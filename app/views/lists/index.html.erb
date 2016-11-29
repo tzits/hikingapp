@@ -1,5 +1,7 @@
 <div class='container'>
 <% @lists.each do |l| %>
-<div class="col-sm-12 col-lg-12"><h1><%= link_to l.name, category_path(l,l.categories.first)%></h1></div>
+<div class="col-sm-12 col-lg-4"><h1><%= link_to l.name, category_path(l,l.categories.first)%></h1><br>
+<%= image_tag l.image, class: 'col-sm-12 col-lg-12'%></div>
+
 <% end %>
 </div>

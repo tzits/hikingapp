@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127112258) do
+ActiveRecord::Schema.define(version: 20161128223659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,15 +28,14 @@ ActiveRecord::Schema.define(version: 20161127112258) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "advice"
+    t.boolean  "important"
     t.index ["checklist_id"], name: "index_checklist_items_on_checklist_id", using: :btree
   end
 
   create_table "checklists", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_checklists_on_user_id", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -78,6 +77,17 @@ ActiveRecord::Schema.define(version: 20161127112258) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
+  end
+
+  create_table "user_checklist_items", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "checklist_item_id"
+    t.boolean  "checked"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["checklist_item_id"], name: "index_user_checklist_items_on_checklist_item_id", using: :btree
+    t.index ["user_id"], name: "index_user_checklist_items_on_user_id", using: :btree
   end
 
   create_table "user_list_category_items", force: :cascade do |t|
@@ -111,12 +121,13 @@ ActiveRecord::Schema.define(version: 20161127112258) do
   end
 
   add_foreign_key "checklist_items", "checklists"
-  add_foreign_key "checklists", "users"
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "items", "categories"
   add_foreign_key "list_contents", "categories"
   add_foreign_key "list_contents", "lists"
+  add_foreign_key "user_checklist_items", "checklist_items"
+  add_foreign_key "user_checklist_items", "users"
   add_foreign_key "user_list_category_items", "categories"
   add_foreign_key "user_list_category_items", "items"
   add_foreign_key "user_list_category_items", "lists"

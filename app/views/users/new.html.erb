@@ -1,8 +1,9 @@
-<div>
+<body style='background-image:url("https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/14192626_10207786489205092_2983259767406601517_n.jpg?oh=db50985462e90ce725fd46fdb32592c2&oe=58BA635F");background-repeat:no-repeat; background-size:100% '>
+<div class='container' >
 <%= form_for (@user = User.new) do |f| %>
-<div>  <%= f.text_field :first_name, class: "form-control margin-top-5", placeholder: "First Name" %></div>
-<div>  <%= f.text_field :last_name, class: "form-control margin-top-5", placeholder: "Last Name" %></div>
-<div>  <%= f.text_field :trail_name, class: "form-control margin-top-5", placeholder: "Trail Name" %></div>
+<div>  <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %></div>
+<div>  <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %></div>
+<div>  <%= f.text_field :trail_name, class: "form-control", placeholder: "Trail Name" %></div>
 <div>  <%= f.select :experience, [['Thru Hiker'],['Lasher'],['Section Hiker'],['Weekend Warrior'],['Day Hiker']], class: "form-control inline-block center_vertical" %> </div>
 <div>  <%= f.select :gender, [['Female'],['Male'],['Other']], class: "form-control inline-block center_vertical" %></div>
 <div>  <%= f.email_field :email, class: "form-control", placeholder: "Email" %></div>
@@ -12,3 +13,4 @@
 
 <% end %>
 </div>
+</body>
