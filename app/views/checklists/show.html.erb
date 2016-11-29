@@ -17,11 +17,13 @@
   <% end %>
   <%= item.name %>
 </span>
+<% if item.advice != "" %>
 <a class="glyphicon glyphicon-chevron-down" role="button" data-toggle="collapse" href="#advice" aria-expanded="false" aria-controls="advice">
 </a>
   <div class="collapse" id="advice">
     <%= item.advice %>
   </div>
+  <% end %>
 <% end %>
 </div>
 <% end %>
