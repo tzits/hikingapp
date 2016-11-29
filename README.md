@@ -37,7 +37,7 @@ The user is able so choose what type of activity they are interested in pursuing
 ![alt text](http://i.imgur.com/7QykV07.png)
 
 
-#EED
+#ERD
 
 ![alt text](http://i.imgur.com/iLmYWqw.png)
 
