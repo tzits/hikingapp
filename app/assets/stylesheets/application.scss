@@ -17,6 +17,11 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+#brand-image {
+	height:35px;
+	margin-top:-7px;
+}
+
 nav {
   background-color: lightgrey;
 }
