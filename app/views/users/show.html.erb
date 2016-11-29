@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col-xs-12 col-lg-4"><%= image_tag @user.avatar.url(:thumb), class: 'col-xs-12' %>
     </div>
-    <div class="col-xs-12 col-lg-4" style='text-align:center'>
+    <div class="col-xs-12 col-lg-4" id='middle_container'>
       <!-- display name -->
       <% if @user.trail_name != "" %>
         <h1><%= @user.trail_name.capitalize %></h1>
@@ -26,7 +26,7 @@
   </div>
 </div>
 <div class='container' >
-  <div class="col-xs-12 col-lg-12" style='margin-top:25px'>
+  <div class="col-xs-12 col-lg-12" id='new_list'>
     <%= link_to 'Create New Gear List', lists_path, class:"btn btn-lg btn-default" %>
   </div>
 </div>
@@ -38,8 +38,8 @@
         <% element.each do |l| %>
           <div class='row'>
             <div class="col-xs-4 col-md-3 col-lg-2">
-              <%=image_tag Item.find(l.item_id).image, style: 'height:100px', class: 'center-block' %>
-              <h4 style='text-align:center;'><%= Item.find(l.item_id).name %></h4><br>
+              <%=image_tag Item.find(l.item_id).image, id: 'item_image', class: 'center-block' %>
+              <h4 id='item_name'><%= Item.find(l.item_id).name %></h4><br>
               <!-- modal to add comments -->
               <% if ((current_user.id).to_s == (params[:id]).to_s) %>
                   <button class="btn btn-default center-block" data-toggle="modal" data-target="#modal-<%=l.item_id%>" style='width:150px'>Comment</button>
@@ -52,9 +52,9 @@
                             <label><h3>Comment Title</h3></label><br>
                             <%= f.text_field :title, class: "form-control" %>
                             <label>Comment</label><br>
-                            <%= f.text_area :body, class: "form-control" %>
+                            <%= f.text_area :body, cols: 40, rows: 10, class: "form-control" %>
                             <label>Rating (1-5)</label><br>
-                            <%= f.number_field :rating, class: "form-control", style:'width:50px!important' %>
+                            <%= f.number_field :rating, class: "form-control", id: 'rating' %>
                             <%= f.hidden_field :user_id, :value => current_user.id %>
                             <%= f.hidden_field :item_id, :value => l.item_id %>
                             <%= f.submit 'Comment', class: "btn btn-success", id: "add" %>
@@ -63,7 +63,7 @@
                       </div>
                     </div>
                   </div>
-                  <%= link_to 'Remove Item', item_delete_path(l.item_id), :method => :delete, style:'width:150px', class: 'center-block btn btn-danger' %>
+                  <%= link_to 'Remove Item', item_delete_path(l.item_id), :method => :delete, id: 'delete', class: 'center-block btn btn-danger' %>
                 </div>
               <% end %>
             <% end %>

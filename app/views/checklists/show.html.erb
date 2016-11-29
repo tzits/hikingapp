@@ -1,24 +1,25 @@
-<body style='background-image:url("https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/14238257_10207786539646353_6452473052756311490_n.jpg?oh=47be3e17022dcf03837aed37339b1837&oe=58B9D400");background-repeat:no-repeat; background-size:100% '>
-  <div class='container' style='background-color:rgba(200,200,200,.5)'>
+<body style='background-image:url("https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/14238257_10207786539646353_6452473052756311490_n.jpg?oh=47be3e17022dcf03837aed37339b1837&oe=58B9D400");background-repeat:no-repeat;background-size:100%;'
+>
+  <div class='container' id='background-container'>
     <div class='row'>
       <% @sql_list.each do |i| %>
       <!-- find checklistitem from userchecklist item -->
         <% item = ChecklistItem.find(i.checklist_item_id) %>
         <% if ((item.checklist.id.to_s) == (params[:id].to_s)) %>
-          <div class='col-lg-3 col-xs-6' style='margin-bottom:5px'>
+          <div class='col-lg-3 col-xs-6' id='checklist_container'>
             <% if i.checked == false %>
             <!-- fake check box as form -->
                 <%= form_for item, :as => :patch, :url => checklist_item_path do |f| %>
                 <%= f.hidden_field :checked, :value => true %>
                 <%= f.hidden_field :the_id, :value => item.id %>
-                <%= f.submit "  ", class: "btn btn-default btn-xs pull-left", style: 'margin-right:4px' %>
+                <%= f.submit "  ", class: "btn btn-default btn-xs pull-left checked" %>
               <% end %>
             <% else i.checked == true %>
 
               <%= form_for item, :as => :patch, :url => checklist_item_path do |f| %>
               <%= f.hidden_field :checked, :value => false %>
               <%= f.hidden_field :the_id, :value => item.id %>
-              <%= f.submit "x", class: "btn btn-default btn-xs pull-left", style: 'margin-right:4px' %>
+              <%= f.submit "x", class: "btn btn-default btn-xs pull-left checked" %>
           <% end %>
             <% end %>
             <%= item.name %>

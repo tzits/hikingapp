@@ -3,5 +3,6 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:category_id])
     @list = List.find(params[:id])
     @weight = find_weight(current_user)
+    @price = find_price(current_user)
   end
 end
