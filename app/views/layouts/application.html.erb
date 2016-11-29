@@ -45,31 +45,29 @@
             <% if current_user %>
             <li><%= link_to 'Logout', logout_path %></li>
             <% end %>
-
           </ul>
-
         </div>
       </div>
     </nav>
 
     <% if flash[:success] %>
-    <div class="container small-container">
-      <div class="alert alert-danger">
-        <%= flash[:success] %>
+      <div class="container small-container">
+        <div class="alert alert-danger">
+          <%= flash[:success] %>
+        </div>
       </div>
-    </div>
     <% end %>
 
     <% if flash[:error] %>
-<div class="container small-container">
-  <div class="alert alert-danger">
-    <%= flash[:error] %>
-  </div>
-</div>
-<% end %>
+      <div class="container small-container">
+        <div class="alert alert-danger">
+          <%= flash[:error] %>
+        </div>
+      </div>
+    <% end %>
 
     <%= yield %>
 
-<%= render 'partials/checklists' %>
+    <%= render 'partials/checklists' %>
   </body>
 </html>
