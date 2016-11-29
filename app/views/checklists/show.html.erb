@@ -4,11 +4,12 @@
 <% item = ChecklistItem.find(i.checklist_item_id) %>
 <% if ((item.checklist.id.to_s) == (params[:id].to_s)) %>
 <div class='container' style='background-color:rgba(200,200,200,.5)'>
-  <!-- <% if item.important == true  %>
-    <span style='left'>
+  <div class='row'>
+  <% if item.important == true  %>
+    <div class='col-lg-4' style='float:left'>
   <% elsif item.important == false %>
-    <span style='position:absolute;left:50%; width:200px'>
-  <% end %> -->
+    <div class='col-lg-4' style='float:right'>
+  <% end %>
   <% if item.checked == false %>
           <%= form_for item, :as => :patch, :url => checklist_item_path do |f| %>
           <%= f.hidden_field :checked, :value => true %>
@@ -23,7 +24,8 @@
 <br>
 <!-- <span class='advice' id='advice-<%= item.id %>' value='<%= item.id %>'><%= item.advice %></span> -->
 <% end %>
-
+</div>
+</div>
 </div>
 <% end %>
 

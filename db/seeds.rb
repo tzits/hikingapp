@@ -98,7 +98,7 @@ Category.find(6).items.push(Item.find(35))
 Category.find(6).items.push(Item.find(36))
 
 
-List.create(name: 'Biking', image: 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwi0-bXI_cvQAhVoh1QKHRvYDeEQjBwIBA&url=http%3A%2F%2Fpreviews.123rf.com%2Fimages%2Fkotangens%2Fkotangens1302%2Fkotangens130200002%2F17952703-Mountain-bike-wheel-and-sommer-alpine-landscape-Stock-Photo-cycling.jpg&psig=AFQjCNGSJx6AhRKQeBOtSCb_Un7D5C28NA&ust=1480440690578699')
+List.create(name: 'Biking', image: 'http://claimyourjourney.com/wp-content/uploads/2012/06/bike.jpg')
 # Item.create(name: '', brand: '', weight: , size: , unit: , price: , image: 'https://www.rei.com')
 
 Category.create(name: 'Pannier')

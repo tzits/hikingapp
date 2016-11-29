@@ -34,28 +34,26 @@
 <% @sql_bike.each do |l| %>
 <div class='row'>
   <div class="col-sm-4 col-lg-2">
-    <%=image_tag Item.find(l.item_id).image, style: 'height:100px' %><br>
-    <%= Item.find(l.item_id).name %><br>
+    <%=image_tag Item.find(l.item_id).image, style: 'height:100px', class: 'center-block' %>
+    <h4 style='text-align:center;'><%= Item.find(l.item_id).name %></h4><br>
     <!-- modal to add comments -->
     <% if ((current_user.id).to_s == (params[:id]).to_s) %>
-    <button class="btn btn-default" data-toggle="modal" data-target="#modal-<%=l.item_id%>">Comment</button>
+    <button class="btn btn-default center-block" data-toggle="modal" data-target="#modal-<%=l.item_id%>" style='width:150px'>Comment</button>
     <div id="modal-<%=l.item_id%>" class="modal fade" role="dialog">
       <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
       <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
         <%= form_for (@comment = Comment.new) do |f| %>
-        <label>Comment Title</label><br>
+        <label><h3>Comment Title</h3></label><br>
         <%= f.text_field :title, class: "form-control" %>
         <label>Comment</label><br>
-        <%= f.text_field :body, class: "form-control" %>
+        <%= f.text_area :body, class: "form-control" %>
         <label>Rating</label><br>
-        <%= f.number_field :rating, class: "form-control" %>
+        <%= f.number_field :rating, class: "form-control", style:'width:25px!important' %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.hidden_field :item_id, :value => l.item_id %>
-        <%= f.submit 'Comment', class: "btn btn-success", style:'width:150px', id: "add" %>
+        <%= f.submit 'Comment', class: "btn btn-success", id: "add" %>
         <% end %>
 
         </div>
@@ -64,7 +62,7 @@
 
     </div>
 
-    <%= link_to 'Remove Item', item_delete_path(l.item_id), :method => :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Remove Item', item_delete_path(l.item_id), :method => :delete, style:'width:150px', class: 'center-block btn btn-danger' %>
   </div>
   <% end %>
   <% end %>
