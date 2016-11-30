@@ -200,7 +200,7 @@ ChecklistItem.create(important: false, name: 'Biking Shoes', checked: false, adv
 ChecklistItem.create(important: true, name: 'Windbreaker', checked: false, advice: '', checklist_id: 2)
 ChecklistItem.create(important: false, name: 'Sunscreen', checked: false, advice: '', checklist_id: 2)
 ChecklistItem.create(important: false, name: 'External Battery Back', checked: false, advice: '', checklist_id: 2)
-ChecklistItem.create(important: false, name: 'First Aid Kit', checked: false, advice: 'Can be found in most outdoor sports stores', cheslist_id: 2)
+ChecklistItem.create(important: false, name: 'First Aid Kit', checked: false, advice: 'Can be found in most outdoor sports stores', checklist_id: 2)
 ChecklistItem.create(important: true, name: 'Fender', checked: false, advice: 'Great to keep yourself a little dryer on the wet roads', checklist_id: 2)
 
 
