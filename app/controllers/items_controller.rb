@@ -7,8 +7,8 @@ class ItemsController < ApplicationController
       store_item(params[:item][:category_id],params[:item][:list_id],@item)
       redirect_to category_path(list, list.next(@new_ulci.category.id))
     else
-      flash[:error] = @user.errors.full_messages.join(". ")
-      redirect_to user_path(current_user)
+      redirect_to category_path(list, params[:item][:category_id])
+      flash[:error] = 'NEW ITEM NOT CREATED. ' + @item.errors.full_messages.join(". ")
     end
   end
 
