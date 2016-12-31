@@ -1,8 +1,8 @@
 <div class="panel callout radius">
   <div class='row'>
-    <div class="col-xs-12 col-lg-4"><%= image_tag @user.avatar.url(:thumb), class: 'col-xs-12' %>
+    <div class='cont'><%= image_tag @user.avatar.url(:thumb), class: 'col-xs-12' %>
     </div>
-    <div class="col-xs-12 col-lg-4" id='middle_container'>
+    <div class='cont'>
       <!-- display name -->
       <% if @user.trail_name != "" %>
         <h1><%= @user.trail_name.capitalize %></h1>
@@ -13,7 +13,7 @@
       <h3><%= mail_to @user.email, 'Contact' %>
     </div>
     <!-- display bio and edit button -->
-    <div class="col-sm-12 col-lg-4">
+    <div class='cont'>
       <%= @user.bio %><br>
       <% if (current_user.id == @user.id) %>
         <% if (current_user.bio == nil) %>

@@ -33,6 +33,15 @@ width:400px
   width:70px!important
 }
 
-#delete {
-  width:150px
+.cont {
+  width:33%;
+  text-align:center;
+  float:left;
+  position:relative;
+  display:block;
+}
+@media (max-width: 600px) {
+  .cont {
+    width:90%;
+  }
 }
