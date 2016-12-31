@@ -1,10 +1,8 @@
 <div id="checklists-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style='width:300px'>
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
       <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
         <% Checklist.all.each do |checklist| %>
           <div class='container'>
             <div class = 'row'>
