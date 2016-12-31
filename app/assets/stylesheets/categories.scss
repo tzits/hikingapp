@@ -31,10 +31,30 @@
 }
 
 #addbutton {
-  position:fixed;
-  left:90%;
+  position:absolute;
+  left:90vw;
+}
+.skipper {
+  position:absolute;
+  right:94vw;
+}
+.return {
+  position:absolute;
+  right:88vw;
 }
 
 #bag {
   height: 50px;
+}
+.name {
+  padding-left: 40vw!important;
+}
+
+.category {
+  padding-bottom:10px;
+  padding-top:10px;
+}
+
+.selected {
+  background-color:darkgrey;
 }
