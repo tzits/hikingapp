@@ -1,3 +1,9 @@
+<% if current_user %>
+  <script type="text/javascript">
+   window.location.href="/users/" + <%=current_user.id%>  // put your correct path in a string here
+  </script>
+<% end %>
+
 <body style='background-image:url("https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/14183921_10207786523325945_6229699399835756764_n.jpg?oh=953e5aaf0a6f8bc1cf501ab7cf023668&oe=58C8DA68");background-repeat:no-repeat;background-size:100%;'
 >
   <div class="container">
