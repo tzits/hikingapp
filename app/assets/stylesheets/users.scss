@@ -1,18 +1,34 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.large {
+  overflow-x:scroll;
+  white-space: nowrap;
+}
 
+.items {
+  width: 300px;
+  display: block;
+  float:left;
+  position: relative;
+}
 
 .form-control {
   width:60% !important;
   margin-bottom: 5px;
 }
 
+.second {
+  width:125%;
+}
+
 .edit_container {
 background-color:rgba(0,15,11,.1);
 width:400px
 }
-
+#delete {
+  width:200px!important;
+}
 #middle_container {
   text-align:center;
 }

@@ -1,4 +1,5 @@
-<div class="panel callout radius">
+
+<div class="grey panel callout radius">
   <div class='row'>
     <div class='cont'><%= image_tag @user.avatar.url(:thumb), class: 'col-xs-12' %>
     </div>
@@ -25,19 +26,20 @@
     </div>
   </div>
 </div>
-<div class='container' >
+<div class='grey container' >
   <div class="col-xs-12 col-lg-12" id='new_list'>
     <%= link_to 'Create New Gear List', lists_path, class:"btn btn-lg btn-default" %>
   </div>
 </div>
   <!-- display lists -->
 <% [@sql_bike,@sql_hike,@sql_canoe].each do |element| %>
-  <div class='container'>
+  <div class='container large'>
     <% if element.count > 0 %>
       <h2><%= UserListCategoryItem.find(element.first.id).list.name %> List</h2>
+
         <% element.each do |l| %>
-          <div class='row'>
-            <div class="col-xs-4 col-md-3 col-lg-2">
+          <div class='row second'>
+            <div class="items">
               <%=image_tag Item.find(l.item_id).image, id: 'itm_image', class: 'center-block' %>
               <h4 id='itm_name'><%= Item.find(l.item_id).name %></h4><br>
               <!-- modal to add comments -->
@@ -70,4 +72,5 @@
           <% end %>
         </div>
       </div>
+
   <% end %>
