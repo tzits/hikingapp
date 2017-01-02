@@ -34,7 +34,7 @@
 
     <% @category.items.each do |i| %>
     <!-- renders each image -->
-    <div class="col-sm-12 col-lg-4" id="thumbnail_container">
+    <div id="thumbnail_container">
       <%= image_tag i.image, class: 'center-block', id: 'thumbnail'%>
       <h3 style='text-align:center'><%= i.name %></h3>
       <% if current_user %>
