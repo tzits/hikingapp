@@ -1,6 +1,8 @@
 // Place all the styles related to the Categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 #info {
   float:right;
   position: fixed;
@@ -47,7 +49,7 @@
 
 #addbutton {
   position:absolute;
-  left:90vw;
+  left:88vw;
 }
 .skipper {
   position:absolute;
@@ -66,10 +68,14 @@
 }
 
 .category {
-  padding-bottom:10px;
-  padding-top:10px;
+  padding: 10px 30px
 }
 
 .selected {
   background-color:darkgrey;
+}
+
+.list {
+  width:96vw;
+  margin-left:2vw;
 }
