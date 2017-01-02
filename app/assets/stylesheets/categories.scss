@@ -17,6 +17,20 @@
 
 #thumbnail_container {
   margin-top:20px;
+  width: 33%;
+  float: left;
+  position:relative;
+  display:block;
+}
+@media (max-width: 1000px) {
+  #thumbnail_container {
+    width:45%;
+  }
+}
+@media (max-width: 600px) {
+  #thumbnail_container {
+    width:90%;
+  }
 }
 
 .inline {
