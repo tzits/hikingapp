@@ -37,8 +37,8 @@
     <% if element.count > 0 %>
       <h2><%= UserListCategoryItem.find(element.first.id).list.name %> List</h2>
 
+      <div class='row second'>
         <% element.each do |l| %>
-          <div class='row second'>
             <div class="items">
               <%=image_tag Item.find(l.item_id).image, id: 'itm_image', class: 'center-block' %>
               <h4 id='itm_name'><%= Item.find(l.item_id).name %></h4><br>
@@ -66,11 +66,10 @@
                     </div>
                   </div>
                   <%= link_to 'Remove Item', item_delete_path(l.item_id), :method => :delete, id: 'delete', class: 'center-block btn btn-danger' %>
-                </div>
               <% end %>
-            <% end %>
-          <% end %>
+              </div>
+        <% end %>
         </div>
-      </div>
-
-  <% end %>
+    <% end %>
+    </div>
+<% end %>
