@@ -44,7 +44,7 @@
               <h4 id='itm_name'><%= Item.find(l.item_id).name %></h4><br>
               <!-- modal to add comments -->
               <% if ((current_user.id).to_s == (params[:id]).to_s) %>
-                  <button class="btn btn-default center-block" data-toggle="modal" data-target="#modal-<%=l.item_id%>" style='width:150px'>Comment</button>
+                  <button class="btn btn-default center-block comment" data-toggle="modal" data-target="#modal-<%=l.item_id%>" style='width:150px'>Comment</button>
                   <div id="modal-<%=l.item_id%>" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                       <div class="modal-content">
