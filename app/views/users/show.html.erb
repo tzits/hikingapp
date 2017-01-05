@@ -11,16 +11,16 @@
         <h1><%= @user.first_name.capitalize %></h1>
       <% end %>
       <h3><%= @user.experience %></h3>
-      <h3><%= mail_to @user.email, 'Contact' %>
+      <span class="fa fafa fa-envelope-o fa-lg" aria-hidden="true"><b><%= mail_to @user.email, 'Contact', class: 'down' %></b></span>
     </div>
     <!-- display bio and edit button -->
     <div class='cont'>
       <%= @user.bio %><br>
       <% if (current_user.id == @user.id) %>
         <% if (current_user.bio == nil) %>
-          <%= link_to 'Add a Bio', edit_user_path(@user) %>
+          <%= link_to 'Add a Bio', edit_user_path(@user), class: 'mybutton btn btn-sm edit' %>
         <% else %>
-          <%= link_to 'Edit', edit_user_path(@user) %>
+          <%= link_to 'Edit', edit_user_path(@user), class: 'mybutton btn btn-sm edit' %>
         <% end %>
       <% end %>
     </div>
@@ -28,7 +28,7 @@
 </div>
 <div class='grey container' >
   <div class="col-xs-12 col-lg-12" id='new_list'>
-    <%= link_to 'Create New Gear List', lists_path, class:"btn btn-lg btn-default" %>
+    <%= link_to 'Create New Gear List', lists_path, class:"btn btn-lg mybutton" %>
   </div>
 </div>
   <!-- display lists -->

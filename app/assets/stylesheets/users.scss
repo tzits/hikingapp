@@ -67,3 +67,29 @@ width:400px
   width: 120px!important;
   margin-bottom: 4px!important;
 }
+
+.mybutton {
+  border: 1px solid #908080 !important;
+  background-color: lightgrey !important;
+}
+
+.mybutton:hover {
+  color: white !important;
+  background-color: grey !important;
+}
+
+.edit {
+  padding: 3px 10px!important;
+  border-radius: 6px !important;
+}
+
+.fafa {
+
+  font-size:24px;
+  font-weight:500;
+  padding-top: 4px;
+}
+.down {
+  padding-left: 6px;
+  
+}
