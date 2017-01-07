@@ -23,10 +23,21 @@ class ListsController < ApplicationController
     end
   end
 
+  def update
+    @list = List.find(params[:id])
+    @list.update(list_params)
+    if @list.valid?
+      explode
+
+    else
+
+    end
+  end
+
   private
 
   def list_params
-    params.require(:list).permit(:name, :image)
+    params.require(:list).permit(:name, :image, :categories)
   end
 
 end
