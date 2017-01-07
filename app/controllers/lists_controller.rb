@@ -25,7 +25,7 @@ class ListsController < ApplicationController
 
   def update
     @list = List.find(params[:id])
-    @list.update(list_params)
+    @list.categories.push(Category.find(params[:list][:category]))
     if @list.valid?
       explode
 
@@ -39,5 +39,6 @@ class ListsController < ApplicationController
   def list_params
     params.require(:list).permit(:name, :image, :categories)
   end
+
 
 end

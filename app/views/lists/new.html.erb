@@ -2,13 +2,15 @@
 
   <div class='well'>
   <h2>Select Categories</h2>
-  <%= form_for List.find(params[:id]) do |f| %>
     <% Category.all.each do |cat| %>
-      <div><%= f.check_box :id, value: 1 %>
-      <%= f.label cat.name %></div>
-    <% end %>
+    <%= form_for List.find(params[:id]) do |f| %>
+      <div>
+    <%= f.label cat.name %>
+    <%= f.hidden_field :category, value: cat.id %>
     <%= f.submit 'Add Category to List' %>
+  </div>
   <% end %><br>
+  <% end %>
   <%= form_for (Category.new) do |f| %>
     <%= f.text_field :name, placeholder: "Category Name"%><br><br>
     <%= f.submit 'Create Category' %>
