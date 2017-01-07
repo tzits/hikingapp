@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   def new
     @list = List.find(params[:id])
   end
-  
+
   def index
     @lists = List.all
   end
@@ -16,7 +16,7 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     if @list.valid?
       @list.save
-      redirect_to new_list_path
+      redirect_to new_list_path(@list)
     else
       flash[:error] = @user.errors.full_messages.join(". ")
       redirect_to user_path(current_user)
