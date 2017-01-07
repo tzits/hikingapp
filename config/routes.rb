@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :users
   root to: 'sessions#new'
+  get '/categories', to: 'categories#index'
+  post '/categories/new', to: 'categories#create'
+  post '/lists', to: 'lists#create'
+  get '/lists/:id/new', to: 'lists#new', as: 'new_list'
   get '/lists', to: 'lists#index'
   get '/lists/:id', to: 'lists#show', as: 'list'
   post '/user_list_category_items', to: 'user_list_category_items#create'

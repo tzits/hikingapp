@@ -1,0 +1,13 @@
+<h1>New List <%= @list.name %></h1>
+<h2>Select Categories</h2>
+<%= form_for List.find(params[:id]) do |f| %>
+  <% Category.all.each do |cat| %>
+    <div><%= f.check_box :categories %>
+    <%= f.label cat.name %></div>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+<%= form_for (Category.new) do |f| %>
+  <%= f.text_field :name, class: "form-control", placeholder: "Category Name"%>
+  <%= f.submit %>
+<% end %>
