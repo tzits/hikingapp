@@ -11,8 +11,19 @@
   </div>
   <% end %><br>
   <% end %>
-  <%= form_for (Category.new) do |f| %>
+  <%= form_for (Category.new), :url => category_create_path, :html => {:method => :post} do |f| %>
     <%= f.text_field :name, placeholder: "Category Name"%><br><br>
+    <%= f.hidden_field :list, value: @list %>
     <%= f.submit 'Create Category' %>
   <% end %>
 </div>
+
+<% if @list.categories.count > 0 %>
+  <h2> Categories in <%= @list.name %> </h2>
+  <% @list.categories.each do |cat| %>
+  <div><%= cat.name %>
+  <%= link_to 'Remove Category', list_category_delete_path(@list, cat.id), :method => :delete, class: 'center-block btn btn-danger' %>
+  <%= link_to 'Add Items', items_new_path(@list), class: 'center-block btn btn-info' %>
+    </div>
+  <% end %>
+<% end %>

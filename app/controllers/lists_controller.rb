@@ -27,11 +27,19 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @list.categories.push(Category.find(params[:list][:category]))
     if @list.valid?
-      explode
-
+      @list.save
+      redirect_to new_list_path(@list)
     else
-
+      flash[:error] = @list.errors.full_messages.join(". ")
+      redirect_to new_list_path(@list)
     end
+  end
+
+  def delete_cat
+    @list = List.find(params[:id])
+    @list.categories.delete(Category.find(params[:category_id]))
+    @list.save
+    redirect_to new_list_path(@list)
   end
 
   private
