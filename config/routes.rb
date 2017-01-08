@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   resources :users
   root to: 'sessions#new'
+  patch '/lists/:id', to: 'lists#update'
+  delete '/lists/:id/new/:category_id', to: 'lists#delete_cat', as: 'list_category_delete'
+  get '/categories/:id/items/new', to: 'items#new'
   get '/categories', to: 'categories#index'
-  post '/categories/new', to: 'categories#create'
+  post '/lists/:id/categories', to: 'categories#create', as: 'category_create'
   post '/lists', to: 'lists#create'
   get '/lists/:id/new', to: 'lists#new', as: 'new_list'
   get '/lists', to: 'lists#index'
@@ -13,6 +16,8 @@ Rails.application.routes.draw do
   delete '/user_list_category_items/:item_id', to: 'user_list_category_items#destroy', as: 'item_delete'
   post '/items', to: 'items#create', as: 'items'
   get '/items/:id', to: 'items#show', as: 'item'
+  post '/categories/:id/items/', to: 'items#admin_create', as: 'items_create'
+  get '/categories/:id/items/new', to: 'items#new', as: 'items_new'
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
   post '/login', to: 'sessions#create'

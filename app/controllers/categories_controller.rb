@@ -8,6 +8,21 @@ class CategoriesController < ApplicationController
     @price = find_price(current_user)
   end
   def create
-    @category=Category.new
+    list = List.find(params[:id])
+    @category = Category.new(cat_params)
+    if @category.valid?
+      list.categories.push(@category)
+      @category.save
+      redirect_to new_list_path(list)
+    else
+      flash[:error] = @category.errors.full_messages.join(". ")
+      redirect_to new_list_path(list)
+    end
+  end
+
+  private
+
+  def cat_params
+    params.require(:category).permit(:name)
   end
 end
