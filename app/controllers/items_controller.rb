@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def new
-    @category = List.find(params[:id]).categories
+    @category = Category.find(params[:id])
   end
 
   def create
@@ -13,6 +13,19 @@ class ItemsController < ApplicationController
     else
       redirect_to category_path(list, params[:item][:category_id])
       flash[:error] = 'NEW ITEM NOT CREATED. ' + @item.errors.full_messages.join(". ")
+    end
+  end
+
+  def admin_create
+    @category = Category.find(params[:id])
+    @item = Item.new(item_params)
+    if @item.valid?
+      @item.save
+      @category.items.push(@item)
+      redirect_to items_new_path(@category)
+    else
+      flash[:error] = 'NEW ITEM NOT CREATED. ' + @item.errors.full_messages.join(". ")
+      redirect_to items_new_path(@category)
     end
   end
 

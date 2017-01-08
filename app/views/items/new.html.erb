@@ -1,3 +1,27 @@
-<% @category.each do |cat| %>
-<h3><%=cat.name%></h3>
+<h3><%=@category.name%></h3>
+
+
+  <%= form_for (Item.new), :url => items_create_path, :html => {:method => :post} do |f| %>
+  <label> name: </label>
+  <%= f.text_field :name, class: 'inline form-control' %><br>
+  <label> brand: </label>
+  <%= f.text_field :brand, class: 'inline form-control' %><br>
+  <label> price: </label>
+  <%= f.number_field :price, class: 'inline form-control' %><br>
+  <label> weight: </label>
+  <%= f.number_field :weight, class: 'inline form-control' %><br>
+  <label> image url: </label>
+  <%= f.text_field :image, class: 'inline form-control' %><br>
+  <label> size: </label>
+  <%= f.number_field :size, style: 'width:29%;height:34px' %>
+  <label> unit: </label>
+  <%= f.text_field :unit, id: 'units' %>
+  <%= f.hidden_field :category_id, :value => params[:id] %>
+  <%= f.submit 'Add to Category', class: "btn btn-success", id: "add" %>
+<% end %>
+<% if @category.items.count > 0 %>
+<h3>Items</h3>
+  <% @category.items.each do |i| %>
+  <%= i.name %>
+<% end %>
 <% end %>
