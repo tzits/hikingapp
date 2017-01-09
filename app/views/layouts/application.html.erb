@@ -46,6 +46,9 @@
             <li><%= link_to 'Browse', lists_path %></li>
             <li><a href='/pages/about'>About Hyker</a></li>
             <!-- <li><a href='/pages/learnmore'>Learn More</a></li> -->
+            <% if current_user.admin == true %>
+            <li><%= link_to 'New List', new_list_path, "data-toggle" => "modal", 'data-target' => '#addList' %></li>
+            <% end %>
             <% if current_user %>
             <li><%= link_to 'Logout', logout_path %></li>
             <% end %>
@@ -70,8 +73,11 @@
       </div>
     <% end %>
 
+
+
     <%= yield %>
 
+    <%= render 'partials/newlist' %>
     <%= render 'partials/checklists' %>
   </body>
 </html>

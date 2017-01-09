@@ -1,0 +1,17 @@
+<div id="addList" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Admin</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for (List.new) do |f| %>
+          <div>  <%= f.text_field :name, class: "form-control", placeholder: "List Name" %></div>
+          <div>  <%= f.text_field :image, class: "form-control", placeholder: "Image URL" %></div>
+          <div> <%= f.submit %> </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
