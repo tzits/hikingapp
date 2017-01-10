@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def new
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:category_id])
+    @list = List.find(params[:id])
   end
 
   def create
