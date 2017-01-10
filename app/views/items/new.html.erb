@@ -16,7 +16,7 @@
   <%= f.number_field :size, style: 'width:29%;height:34px' %>
   <label> unit: </label>
   <%= f.text_field :unit, id: 'units' %>
-  <%= f.hidden_field :category_id, :value => params[:id] %>
+  <%= f.hidden_field :category_id, :value => params[:category_id] %>
   <%= f.submit 'Add to Category', class: "btn btn-success", id: "add" %>
 <% end %>
 <% if @category.items.count > 0 %>

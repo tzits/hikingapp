@@ -46,8 +46,10 @@
             <li><%= link_to 'Browse', lists_path %></li>
             <li><a href='/pages/about'>About Hyker</a></li>
             <!-- <li><a href='/pages/learnmore'>Learn More</a></li> -->
-            <% if current_user.admin == true %>
-            <li><a data-toggle="modal" data-target="#addList" style='cursor: pointer'>New List</a></li>
+            <% if current_user %>
+              <% if current_user.admin == true %>
+                <li><a data-toggle="modal" data-target="#addList" style='cursor: pointer'>New List</a></li>
+              <% end %>
             <% end %>
             <% if current_user %>
             <li><%= link_to 'Logout', logout_path %></li>
