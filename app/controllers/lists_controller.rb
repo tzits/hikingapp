@@ -1,7 +1,5 @@
 class ListsController < ApplicationController
-  def new
-    @list = List.find(params[:id])
-  end
+
 
   def index
     @lists = List.all
