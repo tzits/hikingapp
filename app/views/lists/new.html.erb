@@ -1,29 +1,36 @@
 <h1>New List <%= @list.name %></h1>
-
-  <div class='well'>
-  <h2>Select Categories</h2>
+<div class='well'>
+  <div>
+    <h2>Select Categories</h2>
     <% Category.all.each do |cat| %>
-    <%= form_for List.find(params[:id]) do |f| %>
-      <div>
-    <%= cat.name %>
-    <%= f.hidden_field :category, value: cat.id %>
-    <%= f.submit 'Add Category to List' %>
+      <%= form_for List.find(params[:id]) do |f| %>
+        <div class= 'col-sm-3'><br>
+          <%= f.submit 'Add to List' %>
+          <%= cat.name %>
+          <%= f.hidden_field :category, value: cat.id %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-  <% end %><br>
-  <% end %>
-  <%= form_for (Category.new), :url => category_create_path, :html => {:method => :post} do |f| %>
-    <%= f.text_field :name, placeholder: "Category Name"%><br><br>
-    <%= f.hidden_field :list, value: @list %>
-    <%= f.submit 'Create Category' %>
-  <% end %>
+  <div>
+    <h2>Add Your Own</h2>
+  </div>
+  <div>
+    <%= form_for (Category.new), :url => category_create_path, :html => {:method => :post} do |f| %>
+      <%= f.text_field :name, placeholder: "Category Name"%>
+      <%= f.hidden_field :list, value: @list %>
+      <%= f.submit 'Create Category' %>
+    <% end %>
+  </div>
+  <div>
+    <% if @list.categories.count > 0 %>
+    <h2> Categories in <%= @list.name %> </h2>
+      <% @list.categories.each do |cat| %>
+        <div><%= cat.name %>
+          <%= link_to 'Remove Category', list_category_delete_path(@list, cat.id), :method => :delete, class: 'btn btn-sm btn-danger' %>
+          <%= link_to 'Add Items', items_new_path(@list,cat), class: 'btn btn-sm btn-info' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-
-<% if @list.categories.count > 0 %>
-  <h2> Categories in <%= @list.name %> </h2>
-  <% @list.categories.each do |cat| %>
-  <div><%= cat.name %>
-  <%= link_to 'Remove Category', list_category_delete_path(@list, cat.id), :method => :delete, class: 'center-block btn btn-danger' %>
-  <%= link_to 'Add Items', items_new_path(cat), class: 'center-block btn btn-info' %>
-    </div>
-  <% end %>
-<% end %>
