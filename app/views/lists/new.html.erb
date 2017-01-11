@@ -1,36 +1,39 @@
-<h1>New List <%= @list.name %></h1>
-<div class='well'>
+<body id='body' style='background-image:url("https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/14316828_10207850057714265_7512118586798994360_n.jpg?oh=df430e26b748419d9af5978b7b3b80b5&oe=58E23F34");background-repeat:no-repeat;background-size:100%;'>
+  <h1>New List <%= @list.name %></h1>
   <div>
-    <h2>Select Categories</h2>
-    <% Category.all.each do |cat| %>
-      <%= form_for List.find(params[:id]) do |f| %>
-        <div class= 'col-sm-3'><br>
-          <%= f.submit 'Add to List' %>
-          <%= cat.name %>
-          <%= f.hidden_field :category, value: cat.id %>
-        </div>
+    <div class='col-sm-12'>
+      <h2>Select Categories</h2>
+      <% Category.all.each do |cat| %>
+        <%= form_for List.find(params[:id]) do |f| %>
+          <div class= 'col-sm-3'><br>
+            <%= f.submit 'Add to List' %>
+            <%= cat.name %>
+            <%= f.hidden_field :category, value: cat.id %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-  <div>
-    <h2>Add Your Own</h2>
-  </div>
-  <div>
-    <%= form_for (Category.new), :url => category_create_path, :html => {:method => :post} do |f| %>
-      <%= f.text_field :name, placeholder: "Category Name"%>
-      <%= f.hidden_field :list, value: @list %>
-      <%= f.submit 'Create Category' %>
-    <% end %>
-  </div>
-  <div>
-    <% if @list.categories.count > 0 %>
-    <h2> Categories in <%= @list.name %> </h2>
-      <% @list.categories.each do |cat| %>
-        <div><%= cat.name %>
-          <%= link_to 'Remove Category', list_category_delete_path(@list, cat.id), :method => :delete, class: 'btn btn-sm btn-danger' %>
-          <%= link_to 'Add Items', items_new_path(@list,cat), class: 'btn btn-sm btn-info' %>
-        </div>
+
+    <div style='padding-top:10px;' class='col-sm-12'>
+      <h2>Add Your Own</h2>
+      <%= form_for (Category.new), :url => category_create_path, :html => {:method => :post} do |f| %>
+        <%= f.text_field :name, placeholder: "Category Name"%>
+        <%= f.hidden_field :list, value: @list %>
+        <%= f.submit 'Create Category' %>
       <% end %>
-    <% end %>
+    </div>
+    <div>
+      <% if @list.categories.count > 0 %>
+      <h2 class='col-sm-12'> Categories in <%= @list.name %> </h2>
+        <% @list.categories.each do |cat| %>
+          <div class='col-sm-4' style='padding-bottom:10px'>
+            <%= cat.name %><br>
+            <%= link_to 'Add Items', items_new_path(@list,cat), class: 'btn btn-sm btn-success' %>
+            <%= link_to 'Remove Category', list_category_delete_path(@list, cat.id), :method => :delete, class: 'btn btn-sm btn-danger' %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+</body>
