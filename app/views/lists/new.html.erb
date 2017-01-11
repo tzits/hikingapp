@@ -28,7 +28,7 @@
       <h2 class='col-sm-12'> Categories in <%= @list.name %> </h2>
         <% @list.categories.each do |cat| %>
           <div class='col-sm-4' style='padding-bottom:10px'>
-            <%= cat.name %><br>
+            <h3><%= cat.name %></h3>
             <%= link_to 'Add Items', items_new_path(@list,cat), class: 'btn btn-sm btn-success' %>
             <%= link_to 'Remove Category', list_category_delete_path(@list, cat.id), :method => :delete, class: 'btn btn-sm btn-danger' %>
           </div>
