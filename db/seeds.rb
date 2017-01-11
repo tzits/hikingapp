@@ -205,3 +205,9 @@ ChecklistItem.create(important: true, name: 'Fender', checked: false, advice: 'G
 
 
 Checklist.create(name: 'canoeing list')
+
+User.all.each do |u|
+  ChecklistItem.all.each do |check|
+    UserChecklistItem.create(checked: false, user_id: u.id, checklist_item_id: check.id)
+  end
+end
