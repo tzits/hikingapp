@@ -40,13 +40,14 @@
   </div>
 </div>
   <!-- display lists -->
-<% [@sql_bike,@sql_hike,@sql_canoe].each do |element| %>
+<% List.all.each do |c| %>
+  <% list_items = User.find_by_sql("SELECT * FROM user_list_category_items WHERE user_id = #{params[:id]} AND list_id = #{c.id}") %>
   <div class='container large'>
-    <% if element.count > 0 %>
-      <h2><%= UserListCategoryItem.find(element.first.id).list.name %> List</h2>
+    <% if list_items.count > 0 %>
+      <h2><%= UserListCategoryItem.find(list_items.first.id).list.name %> List</h2>
 
       <div class='row second'>
-        <% element.each do |l| %>
+        <% list_items.each do |l| %>
             <div class="items">
               <%=image_tag Item.find(l.item_id).image, id: 'itm_image', class: 'center-block' %>
               <h4 id='itm_name'><%= Item.find(l.item_id).name %></h4><br>
