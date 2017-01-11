@@ -98,7 +98,7 @@ Category.find(6).items.push(Item.find(35))
 Category.find(6).items.push(Item.find(36))
 
 
-List.create(name: 'Biking', image: 'http://claimyourjourney.com/wp-content/uploads/2012/06/bike.jpg')
+List.create(name: 'Biking', image: 'https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/14199751_10207786485845008_6888266747274651824_n.jpg?oh=fcb14f56e6cb77779c9fb95d173ee529&oe=59229981')
 # Item.create(name: '', brand: '', weight: , size: , unit: , price: , image: 'https://www.rei.com')
 
 Category.create(name: 'Pannier')
