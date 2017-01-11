@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(first_name: 'admin', last_name: 'admin', email: 'admin@example.com', password_digest: 'password', admin: 'true')
-User.create(first_name: 'natalia', last_name: 'hess', email: 'natalia@natalia.com', password_digest: 'password', admin: 'false')
-User.create(first_name: 'toby', last_name: 'zitsman', email: 'toby@toby.com', password_digest: 'password', admin: 'false')
+User.create(first_name: 'admin', last_name: 'admin', email: 'admin@example.com', password: 'password', admin: 'true')
+User.create(first_name: 'natalia', last_name: 'hess', email: 'natalia@natalia.com', password: 'password', admin: 'false')
+User.create(first_name: 'toby', last_name: 'zitsman', email: 'toby@toby.com', password: 'password', admin: 'false')
 
 List.create(name: 'Hiking', image: 'https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/14238234_10207786522205917_3580828806313491037_n.jpg?oh=5f33630edb6b80123caed2741911ad8e&oe=58BFECC8')
 # Item.create(name: '', brand: '', weight: , size: , unit: , price: , image: 'https://www.rei.com')
