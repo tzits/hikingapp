@@ -22,10 +22,11 @@
 <% if @category.items.count > 0 %>
 <h3>Items</h3>
   <% @category.items.each do |i| %>
-  <div class='col-sm-2' style='padding-bottom:10px'><%= i.name %>
+  <div class='col-sm-2' style='padding-bottom:10px;text-align:center'><%= i.name %>
   <%= image_tag i.image, class: 'center-block', id: 'image' %>
   </div>
 <% end %>
 <% end %>
-
-<%= link_to 'Back to Categories', new_list_path(@list)%>
+<div class='col-sm-12'>
+<%= link_to 'Back to Categories', new_list_path(@list), class: 'btn btn-info'%>
+</div>
