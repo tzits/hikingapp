@@ -1,7 +1,7 @@
 class List < ApplicationRecord
   has_many :list_contents, dependent: :destroy
   has_many :categories, through: :list_contents
-
+  validates :image, :name, presence: true
 
   def is_finished(x)
     if self.next(x)
