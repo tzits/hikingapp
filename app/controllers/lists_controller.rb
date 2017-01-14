@@ -12,6 +12,10 @@ class ListsController < ApplicationController
     @categories = @list.categories
   end
 
+  def edit
+    @list = List.find(params[:id])
+  end
+
   def create
     @list = List.new(list_params)
     if @list.valid?
