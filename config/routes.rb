@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/lists/:id/new', to: 'lists#new', as: 'new_list'
   get '/lists', to: 'lists#index'
   get '/lists/:id/edit' to: 'lists#edit', as: 'edit_list'
+  post '/lists/:id/edit' to: 'list#update'
   get '/lists/:id', to: 'lists#show', as: 'list'
   post '/user_list_category_items', to: 'user_list_category_items#create'
   delete '/user_list_category_items/:item_id', to: 'user_list_category_items#destroy', as: 'item_delete'
