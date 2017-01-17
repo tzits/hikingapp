@@ -4,7 +4,7 @@
     <div class='col-sm-12'>
       <h2>Select Categories</h2>
       <% Category.all.each do |cat| %>
-        <%= form_for List.find(params[:id]) do |f| %>
+        <%= form_for(List.find(params[:id]), :as => :post, :url => cat_edit_list_path) do |f| %>
           <div class= 'col-sm-3'><br>
             <%= f.submit 'Add to List' %>
             <%= cat.name %>
