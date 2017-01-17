@@ -1,5 +1,5 @@
-<div class='jumbotron'>
-  <div class='container edit_container'>
+<div >
+  <div class='container'>
     <%= form_for @list do |f| %>
       <div>
         <label for="Name"> Profile Picture: </label>
@@ -13,5 +13,8 @@
       <div>  <%= f.submit "Update!", class: "btn btn-success btn  btn-signuplog" %>
       </div>
     <% end %>
+  </div>
+  <div class='container'>
+    <%= link_to 'Update List Categories', new_list_path(@list) %>
   </div>
 </div>
