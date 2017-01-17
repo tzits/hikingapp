@@ -34,5 +34,17 @@
         </div>
       <% end %>
     </div>
+  </div><br>
+  <% if current_user.admin == true %>
+  <div class='container'>
+    <h4> Add a New Item </h4>
+    <%= form_for ChecklistItem.new, :as => :create, :url => new_checklist_item_path do |f| %>
+    <%= f.text_field :name, placeholder: 'item name' %><br>
+    <%= f.hidden_field :checked, :value => false %>
+    <%= f.hidden_field :the_id, :value => params[:id] %>
+    <%= f.text_area :advice, placeholder: 'why do you need this? Optional' %><br>
+    <%= f.submit %>
+    <% end %>
   </div>
+  <% end %>
 </body>
