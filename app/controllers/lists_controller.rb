@@ -19,6 +19,8 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.valid?
+      new_check = Checklist.create(name: @list.name)
+      new_check.save
       @list.save
       redirect_to new_list_path(@list)
     else
