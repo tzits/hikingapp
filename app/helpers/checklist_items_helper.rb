@@ -8,4 +8,11 @@ module ChecklistItemsHelper
     end
     user_item.first.save
   end
+
+  def give_everyone(id)
+    User.all.each do |f|
+      UserChecklistItem.create(user_id: f.id, checklist_item_id: id, checked: false)
+    end
+  end
+
 end
