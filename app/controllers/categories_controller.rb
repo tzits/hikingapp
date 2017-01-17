@@ -20,6 +20,12 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def remove_item
+    cat = Category.find(params[:category_id])
+    cat.items.find(params[:delete][:blah]).delete
+    redirect_to :back
+  end
+
   private
 
   def cat_params
