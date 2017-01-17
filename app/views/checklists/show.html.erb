@@ -20,8 +20,8 @@
               <%= f.hidden_field :checked, :value => false %>
               <%= f.hidden_field :the_id, :value => item.id %>
               <%= f.submit "x", class: "btn btn-default btn-xs pull-left checked" %>
-          <% end %>
             <% end %>
+        <% end %>
             <%= item.name %>
             <% if item.advice != "" %>
             <!-- create dropdown for advice -->
@@ -30,8 +30,8 @@
                 <%= item.advice %>
               </div>
             <% end %>
+          </div>
           <% end %>
-        </div>
       <% end %>
     </div>
   </div><br>
