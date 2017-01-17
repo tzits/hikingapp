@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   patch '/checklistitems/:id', to: 'checklist_items#update', as: 'checklist_item'
   post '/checklistitems/:id', to: 'checklist_items#create', as: 'new_checklist_item'
   get '/pages/:page', to: "pages#show", as: "page"
+  get '/users', to: 'users#index', as: 'users'
 end
