@@ -25,7 +25,7 @@
   <div class='col-sm-2' style='padding-bottom:10px;text-align:center'><%= i.name %>
   <%= image_tag i.image, class: 'center-block', id: 'image' %>
   <%= form_for i, :as => :delete, :url => cat_item_path do |f| %>
-    <%= f.hidden_field :blah, :value => i.id %>
+    <%= f.hidden_field :item, :value => i.id %>
     <%= f.submit 'Remove Item', class: 'btn btn-danger btn-sm' %>
   <% end %>
   </div>

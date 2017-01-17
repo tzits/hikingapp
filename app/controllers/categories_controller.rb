@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
 
   def remove_item
     cat = Category.find(params[:category_id])
-    cat.items.find(params[:delete][:blah]).delete
+    cat.items.find(params[:delete][:item]).delete
     redirect_to :back
   end
 
