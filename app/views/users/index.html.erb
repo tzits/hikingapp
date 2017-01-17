@@ -1,0 +1,21 @@
+<% if current_user && current_user.admin == true %>
+  <% @users.all.each do |user| %>
+  <div class='row' style='padding-bottom:10px'>
+    <div class='container'>
+      First Name: <%= user.first_name %><br>
+      Last Name: <%= user.last_name %><br>
+      <% if user.admin == true %>
+        <b>Admin: <%= user.admin %></b>
+      <% else %>
+        Admin: <%= user.admin %>
+      <% end %>
+    </div>
+    <div class='container'>
+      <%= link_to "Destroy", "/users/#{user.id}", method: :delete %>
+    </div>
+  </div>
+  <% end %>
+<% else %>
+  <h1>nothing to see here</h1>
+  <%= link_to 'Go Here', lists_path %>
+<% end %>
