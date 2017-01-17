@@ -2,15 +2,15 @@
   <div class='container edit_container'>
     <%= form_for @list do |f| %>
       <div>
-        <label for="Name"> Profile Picture </label>
-        <%= f.file_field :name, placeholder: @list.name %><br>
+        <label for="Name"> Profile Picture: </label>
+        <%= f.text_field :name, placeholder: @list.name %><br>
       </div>
       <div>
-        <label for="Image"> </label><br>
+        <label for="Image">Image URL: </label>
         <%= f.text_field :image, placeholder: @list.image %>
       </div>
       <br>
-      <div>  <%= f.submit "Update!", class: "btn btn-success btn-lg  btn-signuplog" %>
+      <div>  <%= f.submit "Update!", class: "btn btn-success btn  btn-signuplog" %>
       </div>
     <% end %>
   </div>

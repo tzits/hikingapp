@@ -4,7 +4,7 @@
       <br>
       <%= image_tag l.image, class: 'col-sm-12 col-lg-12'%>
       <% if current_user && current_user.admin == true %>
-      <%= link_to 'Edit List' edit_list_path(l) %>
+      <%= link_to 'Edit List', edited_list_path(l) %>
       <% end %>
     </div>
   <% end %>

@@ -27,7 +27,7 @@ class ListsController < ApplicationController
     end
   end
 
-  def update
+  def update_cat
     @list = List.find(params[:id])
     @list.categories.push(Category.find(params[:list][:category]))
     if @list.valid?
@@ -36,6 +36,16 @@ class ListsController < ApplicationController
     else
       flash[:error] = @list.errors.full_messages.join(". ")
       redirect_to new_list_path(@list)
+    end
+  end
+
+  def update
+    @list = List.find(params[:id])
+    if @list.update(list_params)
+      redirect_to lists_path
+    else
+      redirect_to :back
+      flash[:error] = @list.errors.full_messages.join(". ")
     end
   end
 
