@@ -20,9 +20,9 @@
   </div>
 </div>
 <div class='row'>
-  <% if params[:category_id].to_i == @list.categories.last.id %>
+  <% if current_user && params[:category_id].to_i == @list.categories.last.id %>
     <div class='col-xs-12'><%= link_to 'Return to Profile', user_path(current_user), class: "return btn btn-md btn-danger" %></div>
-  <% else %>
+  <% elsif current_user %>
     <div class='col-xs-12'><%= link_to 'Skip', category_path(List.find(params[:id]), @list.next(params[:category_id])), class: "skipper btn btn-md btn-warning" %></div>
   <% end %>
   <button id='addbutton' class="btn btn-danger btn-md center-block" data-toggle="modal" data-target="#addmodal">Add Your Own</button>
