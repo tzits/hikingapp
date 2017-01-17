@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/lists', to: 'lists#index'
   get '/lists/:id/edit', to: 'lists#edit', as: 'edit_list'
   post '/lists/:id/edit', to: 'lists#update', as: 'edited_list'
-  post '/lists/:id/edit', to: 'list#update_cat'
+  patch '/lists/:id/edit', to: 'lists#update_cat', as: 'cat_edit_list'
   get '/lists/:id', to: 'lists#show', as: 'list'
   post '/user_list_category_items', to: 'user_list_category_items#create'
   delete '/user_list_category_items/:item_id', to: 'user_list_category_items#destroy', as: 'item_delete'

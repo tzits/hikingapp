@@ -29,7 +29,7 @@ class ListsController < ApplicationController
 
   def update_cat
     @list = List.find(params[:id])
-    @list.categories.push(Category.find(params[:list][:category]))
+    @list.categories.push(Category.find(params[:post][:category]))
     if @list.valid?
       @list.save
       redirect_to new_list_path(@list)
