@@ -9,7 +9,7 @@ class ChecklistItemsController < ApplicationController
     @item = ChecklistItem.create(checked: params[:create][:checked], name: params[:create][:name], advice: params[:create][:advice], checklist_id: params[:id])
     if @item.valid?
       @item.save
-      UserChecklistItem.create(user_id: current_user.id, checklist_item_id: @item.id, checked: false)
+      give_everyone(@item.id)
       redirect_to checklist_path(Checklist.find(params[:id]))
     else
       redirect_to :back
