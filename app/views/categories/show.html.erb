@@ -71,10 +71,12 @@
             <% end %>
             <!-- comments -->
             <div>
-              <% i.comments.each do |com| %>
-                <h4><%= com.title %> <%= com.rating %> stars</h4>
-                <h6><%= link_to com.user.first_name, user_path(com.user) %>: <%= com.user.experience %></h6>
-                <p><%= com.body %></p>
+              <% if current_user %>
+                <% i.comments.each do |com| %>
+                  <h4><%= com.title %> <%= com.rating %> stars</h4>
+                  <h6><%= link_to com.user.first_name, user_path(com.user) %>: <%= com.user.experience %></h6>
+                  <p><%= com.body %></p>
+                <% end %>
               <% end %>
             </div>
           </div>
