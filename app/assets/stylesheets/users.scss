@@ -52,7 +52,7 @@ width:400px
 
 .cont {
   width:33%;
-  text-align:left;
+  text-align:center;
   float:left;
   position:relative;
   display:block;
@@ -60,6 +60,12 @@ width:400px
 @media (max-width: 600px) {
   .cont {
     width:90%;
+  }
+  .second {
+    width:100%;
+  }
+  .items {
+    padding-bottom:10px;
   }
 }
 
