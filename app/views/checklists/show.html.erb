@@ -12,7 +12,7 @@
                 <%= form_for item, :as => :patch, :url => checklist_item_path do |f| %>
                 <%= f.hidden_field :checked, :value => true %>
                 <%= f.hidden_field :the_id, :value => item.id %>
-                <%= f.submit "  ", class: "btn btn-default btn-xs pull-left checked" %>
+                <%= f.submit "  ", class: "btn btn-default btn-xs pull-left unchecked" %>
               <% end %>
             <% else i.checked == true %>
 
@@ -36,7 +36,7 @@
     </div>
   </div><br>
   <% if current_user.admin == true %>
-  <div class='container' id='background-container' style='width:175px;margin-left:54px;padding:10px 10px 10px 10px'>
+  <div class='container ' id='background-container' style='width:175px;margin-left:54px;padding:10px 10px 10px 10px'>
     <h4> Add a New Item </h4>
     <%= form_for ChecklistItem.new, :as => :create, :url => new_checklist_item_path do |f| %>
     <%= f.text_field :name, placeholder: 'item name', style: 'width:150px' %><br>
