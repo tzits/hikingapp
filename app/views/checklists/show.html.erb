@@ -36,13 +36,13 @@
     </div>
   </div><br>
   <% if current_user.admin == true %>
-  <div class='container'>
+  <div class='container' id='background-container' style='width:175px;margin-left:54px;padding:10px 10px 10px 10px'>
     <h4> Add a New Item </h4>
     <%= form_for ChecklistItem.new, :as => :create, :url => new_checklist_item_path do |f| %>
-    <%= f.text_field :name, placeholder: 'item name' %><br>
+    <%= f.text_field :name, placeholder: 'item name', style: 'width:150px' %><br>
     <%= f.hidden_field :checked, :value => false %>
     <%= f.hidden_field :the_id, :value => params[:id] %>
-    <%= f.text_area :advice, placeholder: 'why do you need this? Optional' %><br>
+    <%= f.text_area :advice, placeholder: 'why do you need this? Optional', style: 'width:150px' %><br>
     <%= f.submit %>
     <% end %>
   </div>
